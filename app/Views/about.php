@@ -38,9 +38,9 @@
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Bandar Lampung</small>
-                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+62 821 6510 0647</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>workwave@gmail.com</small>
+                    <small class="me-5 text-light"><i class="fa fa-map-marker-alt me-3"></i>Bandar Lampung, Lampung 35141</small>
+                    <small class="me-5 text-light"><i class="fa fa-phone-alt me-3"></i>+62 821-6510-0647</small>
+                    <small class="text-light"><i class="fa fa-envelope-open me-3"></i>workwave@services.com</small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
@@ -70,15 +70,9 @@
                     <a href="index.html" class="nav-item nav-link">Home</a>
                     <a href="about.html" class="nav-item nav-link active">About</a>
                     <a href="service.html" class="nav-item nav-link">Services</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Login</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">Login as Admin</a>
-                            <a href="detail.html" class="dropdown-item">Login as Company</a>
-                            <a href="detail.html" class="dropdown-item">Login as Applicant</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
+                    <a href="contact.html" class="nav-item nav-link">Login</a>
+                    <a href="<?= base_url('/register') ?>" class="nav-item nav-link">Register</a>
+                    <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
                             <a href="price.html" class="dropdown-item">Pricing Plan</a>
@@ -88,7 +82,7 @@
                             <a href="quote.html" class="dropdown-item">Free Quote</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a> -->
                 </div>
             </div>
         </nav>
@@ -379,11 +373,11 @@
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-geo-alt text-primary me-2"></i>
-                                <p class="mb-0">Bandar Lampung</p>
+                                <p class="mb-0">Bandar Lampung, Lampung 35141</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-envelope-open text-primary me-2"></i>
-                                <p class="mb-0">workwave@gmail.com</p>
+                                <p class="mb-0">Workwave@services.com</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-telephone text-primary me-2"></i>
@@ -432,10 +426,9 @@
             <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved. 
+                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">WorkWave</a>. All Rights Reserved. 
 						
 						<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-						Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a></p>
                     </div>
                 </div>
             </div>

@@ -70,7 +70,7 @@
                     <a href="index.html" class="nav-item nav-link">Home</a>
                     <a href="about.html" class="nav-item nav-link active">About</a>
                     <a href="service.html" class="nav-item nav-link">Services</a>
-                    <a href="contact.html" class="nav-item nav-link">Login</a>
+                    <a href="<?= base_url('/login') ?>" class="nav-item nav-link">Login</a>
                     <a href="<?= base_url('/register') ?>" class="nav-item nav-link">Register</a>
                     <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>

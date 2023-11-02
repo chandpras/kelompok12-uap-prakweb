@@ -10,4 +10,10 @@ class AccountController extends BaseController
     {
         return view('register');
     }
+
+    public function login()
+    {
+        return view('login');
+    }
 }
+

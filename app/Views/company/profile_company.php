@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Register</title>
+    <title>Work Wave</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -40,7 +40,7 @@
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <small class="me-5 text-light"><i class="fa fa-map-marker-alt me-3"></i>Bandar Lampung, Lampung 35141</small>
                     <small class="me-5 text-light"><i class="fa fa-phone-alt me-3"></i>+62 821-6510-0647</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-3"></i>Workwave@services.com</small>
+                    <small class="text-light"><i class="fa fa-envelope-open me-3"></i>workwave@services.com</small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
@@ -56,56 +56,68 @@
     </div>
     <!-- Topbar End -->
 
-
-    <!-- Navbar & Carousel Start -->
+    <!-- Navbar Start -->
     <div class="container-fluid position-relative p-0">
-        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src="<?= base_url('assets/img/carousel-1.jpg') ?>" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <a href="index.html" class="navbar-brand p-1">
-                                <h1 class="m-0 text-white"><i class="fa fa-user-tie me-3"></i>WorkWave</h1>
-                            </a>
-                            <h1 class="display-1 text-white mb-md-3 animated zoomIn">Sign Up</h1>
-                        </div>
-                    </div>
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+            <a href="index.html" class="navbar-brand p-0">
+                <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>WorkWave</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="<?= base_url('/company') ?>" class="nav-item nav-link">Home</a>
+                    <a href="<?= base_url('/company/profile') ?>" class="nav-item nav-link active">Profile</a>
+                </div>
+                <a href="<?= base_url('logout') ?>" class="btn btn-primary py-2 px-4 ms-3">Logout</a>
+            </div>
+        </nav>
+
+        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+            <div class="row py-5">
+                <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+                    <h1 class="display-4 text-white animated zoomIn">Set Up Your Profile</h1>
+                    <a href="" class="h5 text-white">Profile</a>
+                    <i class="far fa-circle text-white px-2"></i>
+                    <a href="" class="h5 text-white">Company</a>
                 </div>
             </div>
-
         </div>
     </div>
-    <!-- Navbar & Carousel End -->
-    
+    <!-- Navbar End -->
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-1 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-3">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">Profile</h5>
+                <h1 class="mb-0">Set up your profile, So people can get to know your company</h1>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->    
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
-                <div class="col">
+            <div class="row gx-5">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
+                        <a href="index.html" class="navbar-brand">
+                            <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>WorkWave</h1>
+                        </a>
+                        <p class="mt-3 mb-4">Raih Pekerjaan Impianmu bersama WorkWave</p>
+                        <form action="">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-white p-3" placeholder="Your Email">
+                                <button class="btn btn-dark">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-6">
                     <div class="row gx-5">
-                        <div class="bg-transparent rounded h-100 align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-12">
-                                        <input type="text" class="form-control bg-light border-0" placeholder="Enter Your Username" style="height: 55px;">
-                                    </div>
-                                    <div class="col-12">
-                                        <input type="password" class="form-control bg-light border-0" placeholder="Enter Your Password" style="height: 55px;">
-                                    </div>
-                                    <div class="col-12">
-                                        <select class="form-select bg-light border-0" style="height: 55px;">
-                                            <option selected disabled>Select Your Role</option>
-                                            <option value="1">Company</option>
-                                            <option value="2">Applicant</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Sign Up</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
                         <div class="col-lg-4 col-md-12 pt-5 mb-5">
                             <div class="section-title section-title-sm position-relative pb-3 mb-4">
                                 <h3 class="text-light mb-0">Get In Touch</h3>
@@ -120,7 +132,7 @@
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-telephone text-primary me-2"></i>
-                                <p class="mb-0">+62 821-6510-0647</p>
+                                <p class="mb-0">+62 821 6510 0647</p>
                             </div>
                             <div class="d-flex mt-4">
                                 <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
@@ -157,11 +169,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
     <div class="container-fluid text-white" style="background: #061429;">
         <div class="container text-center">
-            <div class="row justify-content-center">
+            <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
                         <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">WorkWave</a>. All Rights Reserved. 

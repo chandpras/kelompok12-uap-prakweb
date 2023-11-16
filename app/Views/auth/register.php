@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>Register</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -56,6 +56,25 @@
     </div>
     <!-- Topbar End -->
 
+        <!-- Navbar Start -->
+        <div class="container-fluid position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+                <a href="index.html" class="navbar-brand p-0">
+                    <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>WorkWave</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="<?= base_url('/login') ?>" class="nav-item nav-link">Login</a>
+                        <a href="<?= base_url('/register') ?>" class="nav-item nav-link">Register</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Navbar End -->
+
 
     <!-- Navbar & Carousel Start -->
     <div class="container-fluid position-relative p-0">
@@ -68,7 +87,7 @@
                             <a href="index.html" class="navbar-brand p-1">
                                 <h1 class="m-0 text-white"><i class="fa fa-user-tie me-3"></i>WorkWave</h1>
                             </a>
-                            <h1 class="display-1 text-white mb-md-3 animated zoomIn">Login</h1>
+                            <h1 class="display-1 text-white mb-md-3 animated zoomIn">Sign Up</h1>
                         </div>
                     </div>
                 </div>
@@ -85,16 +104,28 @@
                 <div class="col">
                     <div class="row gx-5">
                         <div class="bg-transparent rounded h-100 align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
-                            <form>
+                            <?= view('Myth\Auth\Views\_message_block') ?>
+                            <form action="<?= url_to('register') ?>" method="post">
+                                <?= csrf_field() ?>
                                 <div class="row g-3">
                                     <div class="col-12">
-                                        <input type="text" class="form-control bg-light border-0" placeholder="Enter Your Username" style="height: 55px;">
+                                        <input type="email" class="form-control bg-light border-0 <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" name="email" placeholder="Enter Your Email" style="height: 55px;" value="<?= old('email') ?>">
                                     </div>
                                     <div class="col-12">
-                                        <input type="password" class="form-control bg-light border-0" placeholder="Enter Your Password" style="height: 55px;">
+                                        <input type="text" class="form-control bg-light border-0 <?php if (session('errors.username')) : ?>is-invalid<?php endif ?>" name="username" placeholder="Enter Your Username" style="height: 55px;" value="<?= old('username') ?>">
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Login</button>
+                                        <input type="password" class="form-control bg-light border-0 <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" name="password" placeholder="Enter Your Password" style="height: 55px;" autocomplete="off">
+                                    </div>
+                                    <div class="col-12">
+                                        <select class="form-select bg-light border-0" id="role" name="role" style="height: 55px;" value="<?= old('role') ?>">
+                                            <option selected disabled>Select Your Role</option>
+                                            <option value="company">Company</option>
+                                            <option value="applicant">Applicant</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100 py-3" type="submit">Sign Up</button>
                                     </div>
                                 </div>
                             </form>

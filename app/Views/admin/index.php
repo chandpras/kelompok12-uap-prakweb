@@ -32,6 +32,9 @@
 </head>
 
 <body>
+    <?php 
+    $auth = service('authentication');
+    $userId = $auth->id(); ?>
     <!-- Topbar Start -->
     <div class="container-fluid bg-dark px-5 d-none d-lg-block">
         <div class="row gx-0">
@@ -57,7 +60,7 @@
 
     <!-- Navbar Start -->
     <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-5 py-lg-0">
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <a href="index.html" class="navbar-brand p-0">
                 <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>WorkWave</h1>
             </a>
@@ -65,104 +68,50 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto py-0">
-                    <a href="<?php
-                        if(in_groups('admin')) {
-                            echo base_url('/admin');
-                        }else if(in_groups('applicant')){
-                            echo base_url('/applicant');
-                        }else if(in_groups('company')){
-                            echo base_url('/company');
-                        }
-                    ?>" class="nav-item nav-link">Home</a>>
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">Profile</a>
+                    <a href="service.html" class="nav-item nav-link">Services</a>
+                    
+                    <!-- <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="price.html" class="dropdown-item">Pricing Plan</a>
+                            <a href="feature.html" class="dropdown-item">Our features</a>
+                            <a href="team.html" class="dropdown-item">Team Members</a>
+                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            <a href="quote.html" class="dropdown-item">Free Quote</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a> -->
                 </div>
                 <a href="<?= base_url('logout') ?>" class="btn btn-primary py-2 px-4 ms-3">Logout</a>
             </div>
         </nav>
 
-        <div class="container-fluid bg-primary py-5 bg-header">
+        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
                     <h1 class="display-4 text-white animated zoomIn">Logged in as <?= $userId ?></h1>
                     <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h5 text-white">Blank Page</a>
+                    <a href="" class="h5 text-white">Home</a>
                     <i class="far fa-circle text-white px-2"></i>
                 </div>
             </div>
         </div>
     </div>
     <!-- Navbar End -->
-
-    <!-- Full Screen Search Start -->
-    <!-- <div class="modal fade" id="searchModal" tabindex="-1">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex align-items-center justify-content-center">
-                    <div class="input-group" style="max-width: 600px;">
-                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
-                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Full Screen Search End -->
     
-    <!-- <section class="home-section section-hero overlay bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
-
-      <div class="container">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-md-12">
-            <form method="post" class="search-jobs-form">
-              <div class="row mb-5">
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                  <input type="text" class="form-control form-control-lg" placeholder="Job title, Company...">
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                <select class="form-control form-control-lg" aria-label="Default select example">
-                    <option selected>Select Region</option>
-                    <option value="1">Bandar Lampung</option>
-                    <option value="2">Metro</option>
-                    <option value="3">Lampung Timur</option>
-                </select>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                <select class="form-control form-control-lg" aria-label="Default select example">
-                    <option selected>Select Job Type</option>
-                    <option value="1">Part Time</option>
-                    <option value="2">Full Time</option>
-                </select>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                  <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search Job</button>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 popular-keywords">
-                  <h3>Trending Keywords:</h3>
-                  <ul class="keywords list-unstyled m-0 p-0">
-                    <li><a href="#" class="">UI Designer</a></li>
-                    <li><a href="#" class="">Python</a></li>
-                    <li><a href="#" class="">Developer</a></li>
-                  </ul>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+    <section class="home-section section-hero overlay bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
 
       <a href="#next" class="scroll-button smoothscroll">
         <span class=" icon-keyboard_arrow_down"></span>
       </a>
 
-    </section> -->
+    </section>
 
     <!-- About Start -->
-    <!-- <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-7">
@@ -195,11 +144,12 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <!-- About End -->
+    <br><br>
 
         <!-- Facts Start -->
-    <!-- <div class="container-fluid facts py-5 pt-lg-0">
+    <div class="container-fluid facts py-5 pt-lg-0">
         <div class="container py-5 pt-lg-0">
             <div class="row gx-0">
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
@@ -237,110 +187,43 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <!-- Facts Start -->
 
-    <!-- Service Start -->
-    <!-- <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h1 class="mb-0">Job Lists</h1>
-            </div>
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fa fa-shield-alt text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Cyber Security</h4>
-                        <p class="m-0">Cybersecurity adalah praktik melindungi sistem komputer dan data dari ancaman siber seperti peretasan dan malware. Ini sangat penting untuk menjaga keamanan dan integritas informasi dalam dunia digital.</p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fa fa-chart-pie text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Data Analytics</h4>
-                        <p class="m-0">Tugas utama melibatkan manipulasi data, analisis statistik, serta pembuatan laporan dan visualisasi data untuk pengambilan keputusan. Diperlukan pemahaman statistik, pemrograman, dan komunikasi yang baik.</p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fa fa-code text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Web Development</h4>
-                        <p class="m-0">Pekerjaan ini mencakup pemrograman, desain web, dan penyelesaian masalah teknis. Web developer bekerja untuk menciptakan situs web yang responsif dan menarik</p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fab fa-android text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Apps Development</h4>
-                        <p class="m-0">Pengembang aplikasi bertanggung jawab merancang dan membangun aplikasi sesuai dengan kebutuhan klien atau perusahaan, serta memastikan kualitas dan keamanan aplikasi tersebut</p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fa fa-search text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Product Desainer</h4>
-                        <p class="m-0">Product Designer melibatkan desain produk yang mencakup tampilan, fungsionalitas, dan pengalaman pengguna yang optimal.</p>
-                        <a class="btn btn-lg btn-primary rounded" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-                    <div class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
-                        <h3 class="text-white mb-3">Call Us For More</h3>
-                        <p class="text-white mb-3">Untuk keterangan lebih lanjut, hubungi kami melalui kontak dibawah ini</p>
-                        <h2 class="text-white mb-0">+62 821 6510 0646</h2>
-                    </div>
-                </div>
-            </div>
+    <!-- List User Start -->
+        <div class="row mx-5">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($users as $user) : ?>
+                    <tr>
+                        <th scope="row"><?= $i++ ?></th>
+                        <td><?= $user->username; ?></td>
+                        <td><?= $user->email; ?></td>
+                        <td><?= $user->name; ?></td>
+                        <td>
+                            <a href="#">Detail</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
-    </div> -->
-    <!-- Service End -->
-
-    <!-- Vendor Start -->
-    <!-- <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5 mb-5">
-            <div class="bg-white">
-                <div class="owl-carousel vendor-carousel">
-                    <img src="<?= base_url("assets/img/vendor-1.jpg")?>" alt="">
-                    <img src="<?= base_url("assets/img/vendor-2.jpg")?>" alt="">
-                    <img src="<?= base_url("assets/img/vendor-3.jpg")?>" alt="">
-                    <img src="<?= base_url("assets/img/vendor-4.jpg")?>" alt="">
-                    <img src="<?= base_url("assets/img/vendor-5.jpg")?>" alt="">
-                    <img src="<?= base_url("assets/img/vendor-6.jpg")?>" alt="">
-                    <img src="<?= base_url("assets/img/vendor-7.jpg")?>" alt="">
-                    <img src="<?= base_url("assets/img/vendor-8.jpg")?>" alt="">
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Vendor End -->
+        
+    <!-- List User Ends -->
     
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row gx-5">
                 <div class="col-lg-4 col-md-6 footer-about">

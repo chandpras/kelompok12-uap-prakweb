@@ -46,6 +46,10 @@ $routes->get('/admin/index', 'AdminController::index', ['filter' => 'role:admin'
 $routes->get('/applicant', 'ApplicantController::index', ['filter' => 'role:applicant']);
 $routes->get('/applicant/index', 'ApplicantController::index', ['filter' => 'role:applicant']);
 $routes->get('/applicant/profile', 'ApplicantController::profile', ['filter' => 'role:applicant']);
+$routes->get('/create-applicant', 'ApplicantController::create');
+$routes->post('/save-applicant', 'ApplicantController::save');
+
+$routes->get('/edit-applicant', 'UpdateApplicantController::index');
 
 // Company Routes
 $routes->get('/company', 'CompanyController::index', ['filter' => 'role:company']);

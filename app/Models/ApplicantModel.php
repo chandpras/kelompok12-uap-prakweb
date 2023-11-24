@@ -37,4 +37,16 @@ class ApplicantModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getApplicant(){
+        return $this->findAll();
+    }
+    public function saveApplicant($data){
+        $this->insert($data);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\UserModel', 'id_user', 'id');
+    }
 }

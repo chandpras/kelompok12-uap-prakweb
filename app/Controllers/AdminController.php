@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\CompanyModel;
+use App\Models\ApplicantModel;
 use App\Models\UserModel;
 
 class AdminController extends BaseController
@@ -28,6 +29,9 @@ class AdminController extends BaseController
 
         $company = new CompanyModel();
         $data['company'] = $company->findAll();
+
+        $applicant = new ApplicantModel();
+        $data['applicant'] = $applicant->findAll();
 
         return view('admin/index', $data);
     }

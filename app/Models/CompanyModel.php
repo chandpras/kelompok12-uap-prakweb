@@ -37,4 +37,16 @@ class CompanyModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getCompany(){
+        return $this->findAll();
+    }
+    public function saveCompany($data){
+        $this->insert($data);
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo('App\Models\UserModel', 'id_user', 'id');
+    }
 }

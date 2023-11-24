@@ -51,3 +51,8 @@ $routes->get('/applicant/profile', 'ApplicantController::profile', ['filter' => 
 $routes->get('/company', 'CompanyController::index', ['filter' => 'role:company']);
 $routes->get('/company/index', 'CompanyController::index', ['filter' => 'role:company']);
 $routes->get('/company/profile', 'CompanyController::profile', ['filter' => 'role:company']);
+$routes->get('/create-company', 'CompanyController::create');
+$routes->post('/create-company', 'CompanyController::save');
+
+$routes->get('/edit-company', 'UpdateCompanyController::index');
+

@@ -62,7 +62,7 @@ class CreateApplicantTable extends Migration
         ]);
 
         $this->forge->addKey('id', true, true);
-        $this->forge->addForeignKey('id_user','users','id');
+        $this->forge->addForeignKey('id_user','users','id','CASCADE', 'CASCADE');
         $this->forge->createTable('applicant');
     }
 

@@ -49,30 +49,10 @@
     </div>
     <!-- Topbar End -->
 
-    <!-- Navbar Start -->
-    <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-5 py-lg-0">
-            <a href="index.html" class="navbar-brand p-0">
-                <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>WorkWave</h1>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
-                    <a href="<?= base_url('/company') ?>" class="nav-item nav-link">Home</a>
-                    <a href="<?= base_url('/company/profile') ?>" class="nav-item nav-link active">Profile</a>
-                </div>
-                <a href="<?= base_url('logout') ?>" class="btn btn-primary py-2 px-4 ms-3">Logout</a>
-            </div>
-        </nav>
-    </div>
-    <!-- Navbar End -->
-
   <!-- Profile Card Starts -->
-  <div class="bg-header-sec py-5">
-    <div class="container py-5">
-      <div class="main-body py-5">
+  <div class="bg-header-sec">
+    <div class="container py-4">
+      <div class="main-body">
       
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb" class="main-breadcrumb">
@@ -88,34 +68,29 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
-                    <img src="<?php foreach ($company as $item): ?>
-                            <?= $item->foto_perusahaan ?? base_url('assets/img/defaultimg.jpg');?> 
-                            <?php endforeach;  ?>" alt="Foto" class="rounded-circle" width="150">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                       <div class="mt-3">
-                      <?php 
-                          $auth = service('authentication');
-                          $current_user = $auth->user();
-                      ?>
-                          <h4><?= $current_user->username ?></h4>
-
-                        <p class="text-secondary mb-1">Active Company</p>
-                        <p class="text-muted font-size-sm">
-                          <?php foreach ($company as $item): ?>
-                            <?= $item->alamat_perusahaan ?>
-                          <?php endforeach; ?>
-                        </p>
+                        <?php 
+                        $auth = service('authentication');
+                        $current_user = $auth->user();
+                        ?>
+                        <h4><?= $user->username ?></h4>
+                        <p class="text-secondary mb-1">Full Stack Developer</p>
+                        <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="card mt-3">
-                <ul class="list-group list-group-flush">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                      <h6 class="mb-0"><i class="bi bi-globe mx-2"></i>Website</h6>
+                      <span class="text-secondary">
+                      </span>
+                    </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                       <h6 class="mb-0"><i class="bi bi-telephone mx-2"></i>Phone</h6>
                       <span class="text-secondary">
-                        <?php foreach ($company as $item): ?>
-                            <?= $item->telp_perusahaan ?>
-                        <?php endforeach; ?>
                       </span>
                     </li>
                   </ul>
@@ -126,96 +101,31 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-5">
-                        <h6 class="mb-0">Nama Perusahaan</h6>
+                        <h6 class="mb-0">Nama User</h6>
                         <h5>
-                        <?php foreach ($company as $item): ?>
-                            <h5><?= $item->nama_perusahaan ?></h1>
-                        <?php endforeach; ?>
+                        <?= $user->username ?>
                         </h5>
                       </div>
                     </div>
                     <hr>
                     <div class="row">
                       <div class="col-sm-5">
-                        <h6 class="mb-0">Alamat</h6>
+                        <h6 class="mb-0">Email User</h6>
                         <h5>
-                        <?php foreach ($company as $item): ?>
-                            <h5><?= $item->alamat_perusahaan ?></h1>
-                        <?php endforeach; ?>
+                        <?= $user->email ?>
                         </h5>
                       </div>
                     </div>
                     <hr>
                     <div class="row">
                       <div class="col-sm-5">
-                        <h6 class="mb-0">Nomor Telepon</h6>
+                        <h6 class="mb-0">Role User</h6>
                         <h5>
-                        <?php foreach ($company as $item): ?>
-                            <h5><?= $item->telp_perusahaan ?></h1>
-                        <?php endforeach; ?>
+                        <?= $user->name ?>
                         </h5>
                       </div>
                     </div>
                     <hr>
-                    <div class="row">
-                      <div class="col-sm-5">
-                        <h6 class="mb-0">Bidang</h6>
-                        <h5>
-                        <?php foreach ($company as $item): ?>
-                            <h5><?= $item->bidang_perusahaan ?></h1>
-                        <?php endforeach; ?>
-                        </h5>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-5">
-                        <h6 class="mb-0">Lokasi</h6>
-                        <h5>
-                        <?php foreach ($company as $item): ?>
-                            <h5><?= $item->nama_lokasi ?></h1>
-                        <?php endforeach; ?>
-                        </h5>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-5">
-                        <h6 class="mb-0">Kategori</h6>
-                        <h5>
-                        <?php foreach ($company as $item): ?>
-                            <h5><?= $item->nama_kategori ?></h1>
-                        <?php endforeach; ?>
-                        </h5>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-5">
-                        <h6 class="mb-0">Deskripsi</h6>
-                        <h5>
-                        <?php foreach ($company as $item): ?>
-                            <h5><?= $item->deskripsi_perusahaan ?></h1>
-                        <?php endforeach; ?>
-                        </h5>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-12">
-                          <?php
-                          if ($check == 0) {
-                            ?>
-                            <a href="<?= base_url('/create-company')?>" class="btn btn-primary" >Tambah Data</a>
-                            <?php
-                          }else if ($check == 1){
-                            ?>
-                            <a href="<?= base_url('/edit-company')?>" class="btn btn-primary" >Edit Data</a>
-                            <?php
-                          }
-                          ?>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>

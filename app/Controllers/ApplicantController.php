@@ -29,15 +29,28 @@ class ApplicantController extends BaseController
     {
         $auth = service('authentication');
         $userId = $auth->id();
+
+        // Select applicant attributes
         $this->builder->select('nama_pelamar, alamat_pelamar, 
         telp_pelamar, medsos, foto_pelamar, id_user');
-
         $this->builder->where('id_user', $userId);
         $query = $this->builder->get();
 
-        $data['applicant'] = $query->getResult();       
+        // Check if there are any results
+        if ($query->getNumRows() > 0) {
+            // Results found, return true (1)
+            $check = 1;
+        } else {
+            // No results found, return false (0)
+            $check = 0;
+        }
+        $data = [
+            'applicant' => $query->getResult(),
+            'check'     => $check
+        ];
 
 
+        // return dd($data);
         return view('applicant/profile_applicant', $data);
     }
 
@@ -60,19 +73,76 @@ class ApplicantController extends BaseController
 
     public function save(){
 
+        $path = 'assets/uploads/img/';
+        $foto = $this->request->getFile('foto_pelamar');
+        $name = $foto->getRandomName();
+
+        if($foto->move($path, $name)) 
+        {
+            $foto = base_url($path . $name);
+        }
+
         $this->applicantModel->save([
-            'id' => $this->request->getVar('id'),
             'nama_pelamar' => $this->request->getVar('nama_pelamar'),
             'alamat_pelamar' => $this->request->getVar('alamat_pelamar'),
             'telp_pelamar' => $this->request->getVar('telp_pelamar'),
             'medsos' => $this->request->getVar('medsos'),
-            'foto_pelamar' => $this->request->getVar('foto_pelamar'),
+            'foto_pelamar' => $foto,
             'id_user' => $this->request->getVar('id_user'),
-
         ]);
 
         return redirect()->to(base_url('/applicant'));
+    }
 
+    public function edit()
+    {
+        $auth = service('authentication');
+        $userId = $auth->id();
+
+        // Select applicant attributes
+        $this->builder->select('id, nama_pelamar, alamat_pelamar, 
+        telp_pelamar, medsos, foto_pelamar, id_user');
+        $this->builder->where('id_user', $userId);
+        $query = $this->builder->get();
+
+        $data = [
+            'title' => 'Update Applicant',
+            'applicant_data' => $query->getResult(),
+        ];
+
+        return view ('applicant/edit_applicant', $data);
+    }
+
+    public function update()
+    {
+        $path = 'assets/uploads/img/';
+        $foto = $this->request->getFile('foto_pelamar');
+
+        $id = $this->request->getVar('id_profil');
+        $data = [
+            'nama_pelamar' => $this->request->getVar('nama_pelamar'),
+            'alamat_pelamar' => $this->request->getVar('alamat_pelamar'),
+            'telp_pelamar' => $this->request->getVar('telp_pelamar'),
+            'medsos' => $this->request->getVar('medsos'),
+        ];
+
+        if($foto->isValid()){
+            $name = $foto->getRandomName();
+
+            if($foto->move($path, $name)){
+                $foto_path = base_url($path . $name);
+
+                $data['foto_pelamar'] = $foto_path;
+            }
+        }
+
+        $result = $this->applicantModel->updateApplicant($data, $id);
+
+        if(!$result){
+            return redirect()->back()->withInput();
+        }
+
+        return redirect()->to(base_url('/applicant'));
     }
 
 }

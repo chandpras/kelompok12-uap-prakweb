@@ -2,11 +2,21 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
+
 class Home extends BaseController
 {
+    protected $db, $builder;
+
+    public function __construct()
+    {
+        $this->db      = \Config\Database::connect();
+        $this->builder = $this->db->table('users');
+    }
+
     public function index(): string
     {
-        return view('about');
+        return view('blank');
     }
 
     public function register()

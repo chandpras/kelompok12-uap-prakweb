@@ -41,22 +41,24 @@ $routes->get('/login', 'Home::login');
 // Admin Routes
 $routes->get('/admin', 'AdminController::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'AdminController::index', ['filter' => 'role:admin']);
+$routes->get('/admin/user-profile/(:num)', 'AdminController::detail/$1', ['filter' => 'role:admin']);
+$routes->delete('/admin/user-delete/(:num)', 'AdminController::destroy/$1', ['filter' => 'role:admin']);
 
 // Applicant Routes
 $routes->get('/applicant', 'ApplicantController::index', ['filter' => 'role:applicant']);
 $routes->get('/applicant/index', 'ApplicantController::index', ['filter' => 'role:applicant']);
 $routes->get('/applicant/profile', 'ApplicantController::profile', ['filter' => 'role:applicant']);
-$routes->get('/create-applicant', 'ApplicantController::create');
-$routes->post('/save-applicant', 'ApplicantController::save');
-
-$routes->get('/edit-applicant', 'UpdateApplicantController::index');
+$routes->get('/create-applicant', 'ApplicantController::create', ['filter' => 'role:applicant']);
+$routes->post('/save-applicant', 'ApplicantController::save', ['filter' => 'role:applicant']);
+$routes->get('/edit-applicant', 'ApplicantController::edit', ['filter' => 'role:applicant']);
+$routes->post('/update-applicant', 'ApplicantController::update', ['filter' => 'role:applicant']);
 
 // Company Routes
 $routes->get('/company', 'CompanyController::index', ['filter' => 'role:company']);
 $routes->get('/company/index', 'CompanyController::index', ['filter' => 'role:company']);
 $routes->get('/company/profile', 'CompanyController::profile', ['filter' => 'role:company']);
-$routes->get('/create-company', 'CompanyController::create');
-$routes->post('/create-company', 'CompanyController::save');
-
-$routes->get('/edit-company', 'UpdateCompanyController::index');
+$routes->get('/create-company', 'CompanyController::create', ['filter' => 'role:company']);
+$routes->post('/save-company', 'CompanyController::save', ['filter' => 'role:company']);
+$routes->get('/edit-company', 'CompanyController::edit', ['filter' => 'role:company']);
+$routes->post('/update-company', 'CompanyController::update', ['filter' => 'role:company']);
 

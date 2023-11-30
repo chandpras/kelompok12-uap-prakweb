@@ -44,6 +44,10 @@ class CompanyModel extends Model
     public function saveCompany($data){
         $this->insert($data);
     }
+
+    public function updateApplicant($data, $id){
+        return $this->update($id, $data);
+    }
     
     public function user()
     {

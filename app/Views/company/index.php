@@ -125,9 +125,11 @@
                     <option value="2">Full Time</option>
                 </select>
                 </div>
+        
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                  <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search Job</button>
+                  <a href="<?= base_url('/create-lowongan') ?>" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Tambah Lowongan</a>
                 </div>
+
               </div>
               <div class="row">
                 <div class="col-md-12 popular-keywords">

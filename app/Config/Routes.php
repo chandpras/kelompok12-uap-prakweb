@@ -62,3 +62,10 @@ $routes->post('/save-company', 'CompanyController::save', ['filter' => 'role:com
 $routes->get('/edit-company', 'CompanyController::edit', ['filter' => 'role:company']);
 $routes->post('/update-company', 'CompanyController::update', ['filter' => 'role:company']);
 
+//lowongan
+$routes->get('/lowongan', 'LowonganController::index', ['filter' => 'role:company']);
+$routes->get('/create-lowongan', 'LowonganController::createLowongan', ['filter' => 'role:company']);
+$routes->get('/tambah-lowongan', 'LowonganController::tambahLowongan', ['filter' => 'role:company']);
+$routes->post('/save-lowongan', 'LowonganController::saveLowongan', ['filter' => 'role:company']);
+$routes->get('/simpan-lowongan', 'LowonganController::simpanLowongan', ['filter' => 'role:company']);
+// $routes->get('/create-lowongan/(:num)', 'LowonganController::createLowongan/$1', ['filter' => 'role:company']);

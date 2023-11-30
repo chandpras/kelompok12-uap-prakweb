@@ -168,5 +168,6 @@ class CompanyController extends BaseController
 
         return redirect()->to(base_url('/company'));
     }
+
     
 }

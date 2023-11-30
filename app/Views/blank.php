@@ -34,7 +34,8 @@
 <body>
     <?php 
     $auth = service('authentication');
-    $currentUser = $auth->user(); ?>
+    $currentUser = $auth->user(); 
+    ?>
     <!-- Topbar Start -->
     <div class="container-fluid bg-dark px-5 d-none d-lg-block">
         <div class="row gx-0">
@@ -60,7 +61,7 @@
 
     <!-- Navbar Start -->
     <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-5 py-lg-0">
             <a href="index.html" class="navbar-brand p-0">
                 <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>WorkWave</h1>
             </a>
@@ -68,152 +69,35 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
-                    <a href="#" class="nav-item nav-link active">Home</a>
+            <div class="navbar-nav ms-auto py-0">
+                    <a href="<?php
+                        if(in_groups('admin')) {
+                            echo base_url('/admin');
+                        }else if(in_groups('applicant')){
+                            echo base_url('/applicant');
+                        }else if(in_groups('company')){
+                            echo base_url('/company');
+                        }
+                    ?>" class="nav-item nav-link">Home</a>>
                 </div>
                 <a href="<?= base_url('logout') ?>" class="btn btn-primary py-2 px-4 ms-3">Logout</a>
             </div>
         </nav>
 
-        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+        <div class="container-fluid bg-primary py-5 bg-header">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
                     <h1 class="display-4 text-white animated zoomIn">Logged in as <?= $currentUser->username ?></h1>
                     <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h5 text-white">Home</a>
+                    <a href="" class="h5 text-white">Blank Page</a>
                     <i class="far fa-circle text-white px-2"></i>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Navbar End -->
-    
-    <section class="home-section section-hero overlay bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
-
-      <a href="#next" class="scroll-button smoothscroll">
-        <span class=" icon-keyboard_arrow_down"></span>
-      </a>
-
-    </section>
-
-    <!-- About Start -->
-    <div class="container-fluid wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-7">
-                    <div class="section-title position-relative pb-3 mb-5">
-                        <h1 class="mb-0">Platform Online yang Menyediakan Daftar Pekerjaan dari Berbagai Perusahaan dan Industri</h1>
-                    </div>
-                    <p class="mb-4">Situs ini memungkinkan pencari kerja untuk mencari pekerjaan sesuai dengan kriteria mereka, seperti lokasi, industri, pengalaman, dan pendidikan. Informasi pekerjaan termasuk deskripsi tugas, persyaratan, gaji, dan cara melamar.</p>
-                    <div class="row g-0 mb-3">
-                        <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>24/7 Information Support</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Professional Staff</h5>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-phone-alt text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Call to ask any question</h5>
-                            <h4 class="text-primary mb-0">+62 821 6510 0647</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="<?=base_url("assets/img/about.jpg")?>" style="object-fit: cover;">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
-
-    <!-- Facts Start -->
-    <div class="container-fluid facts py-5 my-1 pt-lg-0">
-        <div class="container py-5 pt-lg-0">
-            <div class="row gx-0">
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                            <i class="fa fa-users text-primary"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0">Candidate</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up"><?= $applicant_count ?></h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="bg-light shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                            <i class="fa fa-check text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-primary mb-0">Job Post</h5>
-                            <h1 class="mb-0" data-toggle="counter-up">54</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                            <i class="fa fa-award text-primary"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0">Company</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up"><?= $company_count ?></h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Facts Start -->
-
-    <!-- List User Start -->
-        <div class="row mx-5">
-            <table class="table table-hover text-center">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col" colspan="2">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($users as $user) : ?>
-                    <tr>
-                        <th scope="row"><?= $i++ ?></th>
-                        <td><?= $user->username; ?></td>
-                        <td><?= $user->email; ?></td>
-                        <td><?= $user->name; ?></td>
-                        <td>
-                            <a href="<?= base_url('admin/user-profile/' . $user->userid) ?>">Detail</a>
-                        </td>
-                        <td>
-                            <form action="<?= base_url('admin/user-delete/' . $user->userid) ?>" method="post">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <?= csrf_field() ?>
-                                <button type="submit" class="btn-primary">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-        
-    <!-- List User Ends -->
-    
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid bg-dark text-light wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row gx-5">
                 <div class="col-lg-4 col-md-6 footer-about">

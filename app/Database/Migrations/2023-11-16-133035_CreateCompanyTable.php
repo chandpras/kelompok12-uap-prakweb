@@ -77,9 +77,9 @@ class CreateCompanyTable extends Migration
         ]);
 
         $this->forge->addKey('id', true, true);
-        $this->forge->addForeignKey('id_user','users','id');
-        $this->forge->addForeignKey('id_lokasi','lokasi','id');
-        $this->forge->addForeignKey('id_kategori','kategori','id');
+        $this->forge->addForeignKey('id_user','users','id','CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_lokasi','lokasi','id','CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_kategori','kategori','id','CASCADE', 'CASCADE');
         $this->forge->createTable('company');
     
     }

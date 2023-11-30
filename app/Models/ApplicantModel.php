@@ -45,6 +45,10 @@ class ApplicantModel extends Model
         $this->insert($data);
     }
 
+    public function updateApplicant($data, $id){
+        return $this->update($id, $data);
+    }
+
     public function user()
     {
         return $this->belongsTo('App\Models\UserModel', 'id_user', 'id');

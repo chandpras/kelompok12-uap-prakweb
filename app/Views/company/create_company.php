@@ -49,87 +49,112 @@
     </div>
     <!-- Topbar End -->
 
-  <!-- Profile Card Starts -->
-<div class="container">
-	<div class="row">
-		<div class="col-12">
-			<!-- Page title -->
-			<div class="my-5">
-            <?php 
-                        $auth = service('authentication');
-                        $current_user = $auth->user();
-                        $userId = $auth->id();
-                    ?>
+	<!-- Form Start -->
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<!-- Page title -->
+				<div class="my-5">
+				<?php 
+							$auth = service('authentication');
+							$current_user = $auth->user();
+							$userId = $auth->id();
+						?>
 
-				<h3>Update Profile <?= $current_user->username ?> </h3>
-				<hr>
-			</div>
-			<!-- Form START -->
-			<form action = "/update-applicant" method="post" enctype="multipart/form-data">
-				<?= csrf_field() ?>
-				<div class="row mb-5 gx-5">
-					<!-- Contact detail -->
-					<div class="col-xxl-8 mb-5 mb-xxl-0">
-						<div class="bg-secondary-soft px-4 py-5 rounded">
-							<div class="row g-3">
-								<h4 class="mb-4 mt-0">Contact detail</h4>
-								<input type="hidden" class="form-control" name="id_user" value= "<?= $userId ?>">
-								<input type="hidden" class="form-control" name="id_profil" value= "<?= $applicant_data[0]->id?>">
-								<!-- Name -->
-								<div class="col-md-6">
-									<label for="nama_perusahaan">Nama Pelamar *</label>
-									<input type="text" class="form-control" name="nama_pelamar" value="<?= $applicant_data[0]->nama_pelamar?>">
-								</div>
-								<!-- Address -->
-								<div class="col-md-6">
-									<label for="alamat_perusahaan">Alamat</label>
-									<input type="text" class="form-control" name="alamat_pelamar" value="<?= $applicant_data[0]->alamat_pelamar?>">
-								</div>
-								<!-- Phone number -->
-								<div class="col-md-6">
-									<label for="telp_perusahaan">Nomor Telepon *</label>
-									<input type="text" class="form-control" name="telp_pelamar" value="<?= $applicant_data[0]->telp_pelamar?>">
-								</div>
-								<!-- SocMed -->
-								<div class="col-md-6">
-									<label for="bidang_perusahaan">Media Sosial *</label>
-									<input type="text" class="form-control" name="medsos" value="<?= $applicant_data[0]->medsos?>">
-								</div>
-                                <div class="col-md-6">
-							</div>
-						</div>
-					</div>
-					<!-- Upload profile -->
-					<div class="col-xxl-4">
-						<div class="bg-secondary-soft px-4 py-5 rounded">
-							<div class="row g-3">
-								<h4 class="mb-4 mt-0">Upload Foto Pelamar</h4>
-								<div class="text-center">
-									<!-- Image upload -->
-									<div class="square display-5 my-3">
-										<img src="<?= $applicant_data[0]->foto_pelamar ?? base_url('assets/img/defaultimg.jpg')?>" alt="" style="width: 100px;">
-									</div>
-									<!-- Button -->
-									<input type="file" id="foto_pelamar" name="foto_pelamar">
-									<!-- Content -->
-									<p class="text-muted mt-3 mb-0"><span class="me-1">Note:</span>Ukuran Minimum 300px x 300px</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> <!-- Row END -->
-				
-				<!-- button -->
-				<div class="gap-3 d-md-flex justify-content-md-end text-center">
-					<button type="submit" class="btn btn-primary btn-lg">Update profile</button>
-                    
+					<h3>Tambah Profile <?= $current_user->username ?> </h3>
+					<hr>
 				</div>
-			</form> <!-- Form END -->
+				<!-- Form START -->
+				<form action = "/save-company" method="post"  enctype="multipart/form-data">
+					<?= csrf_field() ?>
+					<div class="row mb-5 gx-5">
+						<!-- Contact detail -->
+						<div class="col-xxl-8 mb-5 mb-xxl-0">
+							<div class="bg-secondary-soft px-4 py-5 rounded">
+								<div class="row g-3">
+									<h4 class="mb-4 mt-0">Contact detail</h4>
+									<input type="hidden" class="form-control" name="id_user" value= "<?= $userId ?>">
+									<!-- Name -->
+									<div class="col-md-6">
+										<label for="nama_perusahaan">Nama Perusahaan *</label>
+										<input type="text" class="form-control" name="nama_perusahaan" value="">
+									</div>
+									<!-- Address -->
+									<div class="col-md-6">
+										<label for="alamat_perusahaan">Alamat</label>
+										<input type="text" class="form-control" name="alamat_perusahaan" value="">
+									</div>
+									<!-- Phone number -->
+									<div class="col-md-6">
+										<label for="telp_perusahaan">Nomor Telepon *</label>
+										<input type="text" class="form-control" name="telp_perusahaan" value="">
+									</div>
+									<!-- Field -->
+									<div class="col-md-6">
+										<label for="bidang_perusahaan">Bidang *</label>
+										<input type="text" class="form-control" name="bidang_perusahaan" value="">
+									</div>
+									<!-- Location -->
+									<div class="col-md-6">
+										<label for="id_lokasi">Lokasi *</label>
+										<select class="form-control" name="id_lokasi" value="">
+											<option selected disabled>Pilih Lokasi Perusahaan</option>
+											<?php foreach($lokasi as $value): ?>
+												<option value="<?= $value['id'] ?>">
+													<?= $value['nama_lokasi']?>
+												</option>
+												<?php endforeach; ?>
+											</select>
+										</div>
+										<!-- Category -->
+										<div class="col-md-6">
+										<label for="id_kategori">Kategori *</label>
+										<select class="form-control" name="id_kategori" value="">
+											<option selected disabled>Pilih Kategori Bisnis</option>
+											<?php foreach($kategori as $value): ?>
+												<option value="<?= $value['id'] ?>">
+											<?= $value['nama_kategori']?>
+											</option>
+											<?php endforeach; ?>
+										</select>
+									</div>
+									<!-- Desc -->
+									<div class="col-md-6">
+										<label for="deskripsi_perusahaan" class="form-label">Deskripsi *</label>
+										<input type="text" class="form-control"  name="deskripsi_perusahaan">
+									</div>
+								</div> 
+							</div>
+						</div>
+						<!-- Upload profile -->
+						<div class="col-xxl-4">
+							<div class="bg-secondary-soft px-4 py-5 rounded">
+								<div class="row g-3">
+									<h4 class="mb-4 mt-0">Upload Logo Perusahaan</h4>
+									<div class="text-center">
+										<!-- Image upload -->
+										<div class="square display-5 my-3">
+											<i class="fas fa-fw fa-user text-primary"></i>
+										</div>
+										<!-- Button -->
+										<input type="file" id="foto_perusahaan" name="foto_perusahaan">
+										<!-- Content -->
+										<p class="text-muted mt-3 mb-0"><span class="me-1">Note:</span>Ukuran Minimum 300px x 300px</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- Row END -->
+
+					<!-- button -->
+					<div class="gap-3 d-md-flex justify-content-md-end text-center">
+						<button type="submit" class="btn btn-primary btn-lg">Tambah profile</button>
+					</div>
+				</form> 
+				<!-- Form END -->
+			</div>
 		</div>
 	</div>
-</div>
-  <!-- Profile Card Ends -->
-
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

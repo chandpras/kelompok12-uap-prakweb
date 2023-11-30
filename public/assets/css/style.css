@@ -477,6 +477,11 @@ h6,
     background-size: cover;
 }
 
+.bg-header-sec {
+    background: linear-gradient(rgba(9, 30, 62, .7), rgba(9, 30, 62, .7)), url(../img/header-sec.jpg) center center no-repeat;
+    background-size: cover;
+}
+
 .link-animated a {
     transition: .5s;
 }

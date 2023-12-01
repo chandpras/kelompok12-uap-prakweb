@@ -69,3 +69,10 @@ $routes->get('/tambah-lowongan', 'LowonganController::tambahLowongan', ['filter'
 $routes->post('/save-lowongan', 'LowonganController::saveLowongan', ['filter' => 'role:company']);
 $routes->get('/simpan-lowongan', 'LowonganController::simpanLowongan', ['filter' => 'role:company']);
 // $routes->get('/create-lowongan/(:num)', 'LowonganController::createLowongan/$1', ['filter' => 'role:company']);
+
+//Submission_lowongan
+$routes->get('/sublowongan', 'SublowonganController::index', ['filter' => 'role:applicant']);
+$routes->get('/create-sublowongan', 'SublowonganController::createsublowongan', ['filter' => 'role:applicant']);
+$routes->get('/tambah-sublowongan', 'SublowonganController::tambahsublowongan', ['filter' => 'role:applicant']);
+$routes->post('/save-sublowongan', 'SublowonganController::savesublowongan', ['filter' => 'role:applicant']);
+$routes->get('/simpan-sublowongan', 'SublowonganController::simpansublowongan', ['filter' => 'role:applicant']);

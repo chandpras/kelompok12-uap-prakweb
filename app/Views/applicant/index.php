@@ -71,6 +71,7 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="<?= base_url('/applicant') ?>" class="nav-item nav-link active">Home</a>
                     <a href="<?= base_url('/applicant/profile') ?>" class="nav-item nav-link">Profile</a>
+                    <a href="<?= base_url('/applicant/notification') ?>" class="nav-item nav-link">Notifikasi</a>
                     <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
@@ -128,7 +129,7 @@
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                   <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search Job</button>
                 </div>
-                <a href="<?= base_url('/create-sublowongan') ?>" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Tambah Submission Lowongan</a>
+            
               </div>
               <div class="row">
                 <div class="col-md-12 popular-keywords">
@@ -269,7 +270,7 @@
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                         <div class="d-flex mb-3">
                                             <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
-                                            <a class="btn btn-primary" href="">Apply Now</a>
+                                            <a class="btn btn-primary" href="<?= base_url('/applicant/info') ?>">Apply Now</a>
                                         </div>
                                         <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Line: 01 Jan, 2045</small>
                                     </div>
@@ -289,7 +290,7 @@
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                         <div class="d-flex mb-3">
                                             <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
-                                            <a class="btn btn-primary" href="">Apply Now</a>
+                                            <a class="btn btn-primary" href="<?= base_url('/applicant/info') ?>">Apply Now</a>
                                         </div>
                                         <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Line: 01 Jan, 2045</small>
                                     </div>
@@ -355,7 +356,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a class="btn btn-primary py-3 px-5" href="">Browse More Jobs</a>
+                            <a class="btn btn-primary py-3 px-5" href="<?=base_url('/applicant/morejob')?>">Browse More Jobs</a>
                         </div>
                     </div>
                 </div>

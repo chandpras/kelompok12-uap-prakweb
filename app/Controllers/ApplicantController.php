@@ -145,4 +145,15 @@ class ApplicantController extends BaseController
         return redirect()->to(base_url('/applicant'));
     }
 
+    public function info(){
+        return view('applicant/infocompany');
+    }
+
+    public function notif(){
+        return view('applicant/notifikasi');
+    }
+
+    public function morejob(){
+        return view('applicant/browse_more_job');
+    }
 }

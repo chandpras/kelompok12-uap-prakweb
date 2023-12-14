@@ -95,12 +95,11 @@
                                     <th scope="col" class="ps-4" style="width: 50px;">
                                         <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
                                     </th>
-                                    <th scope="col">Judul Pekerjaan</th>
-                                    <th scope="col">Posisi</th>
+                                    <th scope="col">Nama Pelamar</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">Tipe Pekerjaan</th>
-                                    <th scope="col">Tugas</th>
-                                    <th scope="col">Gaji</th>
-                                    <th scope="col">Persyaratan Kerja</th>
+                                    <th scope="col">CV</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -111,56 +110,38 @@
                                     </th>
                                     <td>
                                     <h5>
-                                    <?php foreach ($lowongan as $item): ?>
-                                        <h5><?= $item->judul_pekerjaan ?></h1>
-                                    <?php endforeach; ?>
+
                                     </h5>
                                     </td>
+
+                                    <td>
+                                    <h5>
                                     
-                                    <td>
-                                    <h5>
-                                    <?php foreach ($lowongan as $item): ?>
-                                        <h5><?= $item->posisi ?></h1>
-                                    <?php endforeach; ?>
                                     </h5>
                                     </td>
 
                                     <td>
                                     <h5>
-                                    <?php foreach ($lowongan as $item): ?>
-                                        <h5><?= $item->tipe_pekerjaan ?></h1>
-                                    <?php endforeach; ?>
+                                    
                                     </h5>
                                     </td>
 
                                     <td>
                                     <h5>
-                                    <?php foreach ($lowongan as $item): ?>
-                                        <h5><?= $item->tugas ?></h1>
-                                    <?php endforeach; ?>
+                                    
                                     </h5>
                                     </td>
 
                                     <td>
                                     <h5>
-                                    <?php foreach ($lowongan as $item): ?>
-                                        <h5><?= $item->gaji ?></h1>
-                                    <?php endforeach; ?>
-                                    </h5>
-                                    </td>
-
-                                    <td>
-                                    <h5>
-                                    <?php foreach ($lowongan as $item): ?>
-                                        <h5><?= $item->persyaratan_kerja ?></h1>
-                                    <?php endforeach; ?>
+                                    
                                     </h5>
                                     </td>
 
                                     <td>
                                     <ul class="list-inline mb-0">
                                       <li class="list-inline-item">
-                                          <a href="<?= base_url('/edit-lowongan')?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
+                                          <a href="<?= base_url('/edit-status')?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
                                       </li>
                                       <li class="list-inline-item">
                                           <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
@@ -169,11 +150,6 @@
                                     </td>
 
                                 </tr>
-                                <div class="row">
-                                  <div class="col-sm-12">
-                                        <a href="<?= base_url('/tambah-lowongan' )?>" class="btn btn-primary" >Tambah Data</a>
-                                  </div>
-                                </div>
                             </tbody>
                         </table>
                     </div>

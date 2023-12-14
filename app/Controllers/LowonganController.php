@@ -72,4 +72,13 @@ class LowonganController extends BaseController
     public function simpanLowongan(){
         return view('company/viewlowongan');
     }
+    public function listPelamar(){
+        return view('company/list_pelamar');
+    }
+    public function editPelamar(){
+        return view('company/status_pelamar');
+    }
+    public function editLowongan(){
+        return view('company/update_lowongan');
+    }
 }

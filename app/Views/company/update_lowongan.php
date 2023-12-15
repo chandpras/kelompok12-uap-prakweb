@@ -61,77 +61,81 @@
 							$userId = $auth->id();
 						?>
 
-					<h3>Membuat Submission Lowongan Pekerjaan</h3>
+					<h3>Edit Lowongan Pekerjaan </h3>
 					<hr>
 				</div>
 				<!-- Form START -->
-				<form action = "/save-sublowongan" method="post"  enctype="multipart/form-data">
+				<form action = "/save-lowongan" method="post"  enctype="multipart/form-data">
 					<?= csrf_field() ?>
-					<div class="row mb-5 gx-5">
-						<!-- Contact detail -->
-						<div class="col-xxl-8 mb-5 mb-xxl-0">
-							<div class="bg-secondary-soft px-4 py-5 rounded">
-								<div class="row g-3">
-									<h4 class="mb-4 mt-0">Detail Lowongan Pekerjaan</h4>
-									<!-- <input type="hidden" class="form-control" name="id_company" value= ""> -->
-									<!-- Name -->
-									<div class="col-md-6">
-										<label for="nama_pekerjaan">Nama Pekerjaan *</label>
-										<input type="text" class="form-control" name="nama_pekerjaan" value="">
-									</div>
-									<!-- Address -->
-									<div class="col-md-6">
-										<label for="nama_lengkap">Nama Lengkap</label>
-										<input type="text" class="form-control" name="nama_lengkap" value="">
-									</div>
-                                    <div class="col-md-6">
-										<label for="alamat">Alamat</label>
-										<input type="text" class="form-control" name="alamat" value="">
-									</div>
-									<!-- Phone number -->
-									<!-- Location -->
-									<div class="col-md-6">
-										<label for="jenis_kelamin">Jenis Kelamin *</label>
-										<select class="form-control" name="jenis_kelamin" value="">
-											<option selected disabled>Pilih Jenis Kelamin</option>
-											<option value="1">Laki-laki</option>
-                                            <option value="2">Perempuan</option>
-											</select>
+					
+					<div class="container light-style flex-grow-1 container-p-y">
+						<div class="card overflow-hidden">
+							<div class="row no-gutters row-bordered row-border-light">
+								<div class="col-md-12">
+									<div class="tab-content">
+										<div class="tab-pane fade active show" id="account-general">
+											<div class="card-body" >
+												<div class="col-md-12 mt-3 ">
+													<label for="judul_pekerjaan">Judul Pekerjaan *</label>
+													<input type="text" style="width: 100%;" class="form-control" name="judul_pekerjaan" value="">
+												</div>
+
+												<div class="col-md-12 mt-3">
+													<label for="posisi">Posisi atau Jabatan</label>
+													<input type="text" class="form-control" name="posisi" value="">
+												</div>
+
+												<div class="col-md-12 mt-3">
+													<label for="tipe_pekerjaan">Tipe Pekerjaan *</label>
+													<select class="form-control" name="tipe_pekerjaan" value="">
+														<option selected disabled>Pilih Tipe Pekerjaan</option>
+														<option value="1">Part Time</option>
+														<option value="2">Full Time</option>
+														<option value="2">Magang</option>
+														<option value="2">Kontrak</option>
+														<option value="2">Harian</option>
+														</select>
+												</div>
+
+												<div class="col-md-12 mt-3">
+													<label for="tugas">Tugas *</label>
+													<input type="text" class="form-control" name="tugas" value="">
+												</div>
+												
+												<div class="col-md-12 mt-3">
+													<label for="gaji">Gaji *</label>
+													<input type="text" class="form-control" name="gaji" value="">
+												</div>
+
+												<div class="col-md-12 mt-3">
+													<label for="persyaratan_kerja">Persyaratan Kerja *</label>
+													<input type="text" class="form-control" name="persyaratan_kerja" value="">
+												</div>
+											
+												<!-- Desc -->
+												<div class="col-md-12 mt-3">
+													<label for="cv" class="form-label">CV *</label>
+													<input type="text" class="form-control"  name="cv" value="">
+												</div>
+											</div>
 										</div>
-									<!-- Field -->
-									<div class="col-md-6">
-										<label for="no_telepon">No Telepon *</label>
-										<input type="text" class="form-control" name="no_telepon" value="">
 									</div>
-                                    <div class="col-md-6">
-										<label for="email">Email *</label>
-										<input type="text" class="form-control" name="email" value="">
-									</div>
-                                    <div class="col-md-6">
-										<label for="pendidikan_terakhir">Pendidikan Terakhir</label>
-										<input type="text" class="form-control" name="pendidikan_terakhir" value="">
-									</div>
-								
-									<!-- Desc -->
-									<div class="col-md-6">
-										<label for="cv" class="form-label">CV *</label>
-										<input type="text" class="form-control"  name="cv" value="">
-									</div>
-								</div> 
+								</div>
 							</div>
 						</div>
-					</div> <!-- Row END -->
-
-					<!-- button -->
-					
-					<div class="gap-3 d-md-flex justify-content-md-end text-center">
-						<button type="submit" class="btn btn-primary btn-lg">Simpan</button>
+					</div>
+					<br>
+					<div class="text-right mt-3">
+						<a href="<?= base_url('/simpan-lowongan') ?>" class="btn btn-primary">Save changes</a>&nbsp;
+						<button type="button" class="btn btn-default">Cancel</button>
 					</div>
 				</form> 
 				<!-- Form END -->
-			</div>
-		</div>
-	</div>
+				
+            </div>
+        </div>
+    </div>
+
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

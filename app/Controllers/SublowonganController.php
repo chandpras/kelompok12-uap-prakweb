@@ -45,12 +45,12 @@ class SublowonganController extends BaseController
 
     public function tambahSublowongan()
     {
-        return view ('applicant/create_sublowongan');
+        return view ('applicant/daftar_kerja');
     }
 
-    public function savelowongan()
+    public function savesublowongan()
     {
-        
+        return view('applicant/viewsublowongan');
     }
 
     public function simpanSublowongan()

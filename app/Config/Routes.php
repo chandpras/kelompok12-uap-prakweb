@@ -52,6 +52,10 @@ $routes->get('/create-applicant', 'ApplicantController::create', ['filter' => 'r
 $routes->post('/save-applicant', 'ApplicantController::save', ['filter' => 'role:applicant']);
 $routes->get('/edit-applicant', 'ApplicantController::edit', ['filter' => 'role:applicant']);
 $routes->post('/update-applicant', 'ApplicantController::update', ['filter' => 'role:applicant']);
+$routes->get('/applicant/info', 'ApplicantController::info', ['filter' => 'role:applicant']);
+$routes->get('/applicant/notification', 'ApplicantController::notif', ['filter' => 'role:applicant']);
+$routes->get('/applicant/morejob', 'ApplicantController::morejob', ['filter' => 'role:applicant']);
+
 
 // Company Routes
 $routes->get('/company', 'CompanyController::index', ['filter' => 'role:company']);
@@ -68,7 +72,9 @@ $routes->get('/create-lowongan', 'LowonganController::createLowongan', ['filter'
 $routes->get('/tambah-lowongan', 'LowonganController::tambahLowongan', ['filter' => 'role:company']);
 $routes->post('/save-lowongan', 'LowonganController::saveLowongan', ['filter' => 'role:company']);
 $routes->get('/simpan-lowongan', 'LowonganController::simpanLowongan', ['filter' => 'role:company']);
-// $routes->get('/create-lowongan/(:num)', 'LowonganController::createLowongan/$1', ['filter' => 'role:company']);
+$routes->get('/edit-lowongan', 'LowonganController::editLowongan', ['filter' => 'role:company']);
+$routes->get('/list-pelamar', 'LowonganController::listPelamar', ['filter' => 'role:company']);
+$routes->get('/edit-status', 'LowonganController::editPelamar', ['filter' => 'role:company']);
 
 //Submission_lowongan
 $routes->get('/sublowongan', 'SublowonganController::index', ['filter' => 'role:applicant']);

@@ -5,17 +5,19 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\CompanyModel;
 use App\Models\ApplicantModel;
+use App\Models\LowonganModel;
 use App\Models\UserModel;
 
 class AdminController extends BaseController
 {
-    protected $db, $builder;
+    protected $db, $builder, $buildervac;
     public $userModel;
 
     public function __construct()
     {
         $this->db      = \Config\Database::connect();
         $this->builder = $this->db->table('users');
+        $this->buildervac = $this->db->table('lowongan');
         $this->userModel = new UserModel();
     }
 
@@ -39,10 +41,14 @@ class AdminController extends BaseController
         $this->builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
         $query3 = $this->builder->get();
 
+        $this->buildervac->select();
+        $query4 = $this->buildervac->get();
+
         $data = [
             'users' => $query->getResult(),
             'applicant_count' => $query2->getNumRows(),
-            'company_count' => $query3->getNumRows()
+            'company_count' => $query3->getNumRows(),
+            'job_count' => $query4->getNumRows(),
         ];
 
         // $company = new CompanyModel();
@@ -79,7 +85,7 @@ class AdminController extends BaseController
 
     public function destroy($id)
     {
-        $this->builder->where('id', $id);
+        $this->builder->where('lowongan.id', $id);
         $this->builder->delete();
         $result = $this->builder->get();
 

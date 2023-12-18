@@ -11,18 +11,33 @@ class ApplicantController extends BaseController
     public $applicantModel;
     public $userModel;
     protected $db, $builder;
+    protected $buildervac, $buildercomp;
 
     public function __construct()
     {
         $this->db      = \Config\Database::connect();
         $this->builder = $this->db->table('applicant');
+        $this->buildercomp = $this->db->table('company');
+        $this->buildervac = $this->db->table('lowongan');
         $this->applicantModel = new ApplicantModel();
         $this->userModel = new UserModel();
     }
 
     public function index()
     {
-        return view('applicant/index');
+
+        // Vacancy & Company Data Display
+        $this->buildervac->select('lowongan.id as vacid, judul_pekerjaan, posisi_lowongan, tipe_pekerjaan, gaji_pekerjaan, foto_lowongan, nama_lokasi, lowongan.updated_at');
+        $this->buildervac->join('lokasi', 'lokasi.id = lowongan.id_lokasi');
+        $this->buildervac->join('company', 'company.id = lowongan.id_company');
+        $queryvacancy = $this->buildervac->get();
+
+        $data = [
+            'vacancy'   => $queryvacancy->getResult(),
+        ];
+
+        return view('applicant/index', $data);
+        // dd($data);
     }
 
     public function profile()
@@ -145,8 +160,18 @@ class ApplicantController extends BaseController
         return redirect()->to(base_url('/applicant'));
     }
 
-    public function info(){
-        return view('applicant/infocompany');
+    public function info($id = 0)
+    {
+        $this->buildervac->select();
+        $this->buildervac->where('lowongan.id', $id);
+        $this->buildervac->join('lokasi', 'lokasi.id = lowongan.id_lokasi');
+        $this->buildervac->join('company', 'company.id = lowongan.id_company');
+        $query = $this->buildervac->get();
+
+        $data['infovac'] = $query->getResult();
+
+        return view('applicant/info_lowongan', $data);
+        // dd($data);
     }
 
     public function notif(){

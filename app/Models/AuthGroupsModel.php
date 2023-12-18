@@ -4,18 +4,18 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class LowonganModel extends Model
+class AuthGroupsModel extends Model
 {
-    protected $table            = 'lowongan';
+    protected $table            = 'auth_groups';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_company', 'id_lokasi', 'judul_pekerjaan', 'posisi_lowongan', 'tipe_pekerjaan', 'deskripsi_pekerjaan', 'foto_lowongan', 'gaji_pekerjaan'];
+    protected $allowedFields    = ['name', 'description'];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -37,11 +37,4 @@ class LowonganModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function getLowongan(){
-        return $this->findAll();
-    }
-    public function saveLowongan($data){
-        $this->insert($data);
-    }
 }

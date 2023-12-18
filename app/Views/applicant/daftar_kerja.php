@@ -59,14 +59,17 @@
 							$auth = service('authentication');
 							$current_user = $auth->user();
 							$userId = $auth->id();
-						?>
-
-					<h3>Lamar Kerja</h3>
+				?>
+					
+					<?php foreach ($infovac as $item): ?>
+					<h3>Lamar Kerja Untuk <?= $item->nama_perusahaan ?></h3>
 					<hr>
 				</div>
 				<!-- Form START -->
 				<form action = "/save-sublowongan" method="post"  enctype="multipart/form-data">
 					<?= csrf_field() ?>
+					<input type="hidden" class="form-control" name="id_user" value= "<?= $userId ?>">
+					<input type="hidden" class="form-control" name="id_lowongan" value= "<?= $item->vacid ?>">
 					<div class="container light-style flex-grow-1 container-p-y">
 						<div class="card overflow-hidden">
 							<div class="row no-gutters row-bordered row-border-light">
@@ -74,44 +77,16 @@
 									<div class="tab-content">
 										<div class="tab-pane fade active show" id="account-general">
 											<div class="card-body" >
-												<div class="col-md-12 mt-3 ">
-													<label for="judul_pekerjaan">Nama Pekerjaan *</label>
-													<input type="text" style="width: 100%;" class="form-control" name="judul_pekerjaan" value="">
-												</div>
 
-												<div class="col-md-12 mt-3">
-													<label for="posisi">Nama Lengkap</label>
-													<input type="text" class="form-control" name="posisi" value="">
-												</div>
-
-												<div class="col-md-12 mt-3">
-													<label for="tipe_pekerjaan">Jenis Kelamin</label>
-													<select class="form-control" name="tipe_pekerjaan" value="">
-														<option selected disabled>Pilih Jenis Kelamin</option>
-														<option value="1">Laki-Laki</option>
-														<option value="2">Perempuan</option>
-														</select>
-												</div>
-
-												<div class="col-md-12 mt-3">
-													<label for="tugas">Alamat</label>
-													<input type="text" class="form-control" name="tugas" value="">
-												</div>
-												
-												<div class="col-md-12 mt-3">
-													<label for="gaji">No Telepon</label>
-													<input type="text" class="form-control" name="gaji" value="">
-												</div>
-
-												<div class="col-md-12 mt-3">
-													<label for="persyaratan_kerja">Email</label>
-													<input type="text" class="form-control" name="persyaratan_kerja" value="">
+												<div class="card-body">
+													<h4>Kolom Lamaran Untuk : <?= $item->judul_pekerjaan ?></h4>
+													<h6>Silahkan lampirkan CV untuk seleksi berkas pada lowongan ini. Informasi pribadi akan diambil secara otomatis dari profil anda.</h6>
 												</div>
 											
 												<!-- Desc -->
 												<div class="mb-3">
-													<label for="formFile" class="form-label">CV</label>
-													<input class="form-control" type="file" id="formFile">
+													<label for="cv" class="form-label">CV (.pdf)</label>
+													<input class="form-control" type="file" name="cv" accept="application/pdf">
 												</div>
 											</div>
 										</div>
@@ -122,12 +97,12 @@
 					</div>
 
 					<!-- button -->
-					
 					<div class="gap-3 d-md-flex justify-content-md-end text-center mt-5">
 						<button type="submit" class="btn btn-primary btn-lg">Simpan</button>
 					</div>
 				</form> 
 				<!-- Form END -->
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</div>

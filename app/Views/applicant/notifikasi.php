@@ -69,9 +69,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="<?= base_url('/applicant') ?>" class="nav-item nav-link active">Home</a>
+                    <a href="<?= base_url('/applicant') ?>" class="nav-item nav-link">Home</a>
                     <a href="<?= base_url('/applicant/profile') ?>" class="nav-item nav-link">Profile</a>
-                    <a href="<?= base_url('/applicant/notification') ?>" class="nav-item nav-link">Notifikasi</a>
+                    <a href="<?= base_url('/applicant/notification') ?>" class="nav-item nav-link active">Notifikasi</a>
                     <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
@@ -120,53 +120,38 @@
                             <table class="table project-list-table table-nowrap align-middle table-borderless">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="ps-4" style="width: 50px;">
-                                            <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
-                                        </th>
-                                        <th scope="col">Nama Perusahaan</th>
-                                        <th scope="col">Alamat</th>
-                                        <th scope="col">Email</th>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Perusahaan</th>
+                                        <th scope="col">Judul Pekerjaan</th>
+                                        <th scope="col">Lokasi</th>
                                         <th scope="col">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php $i = 1; ?>
+                                <?php foreach ($submission as $item): ?>
                                     <tr>
-                                        <th scope="row" class="ps-4">
-                                            <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" /><label class="form-check-label" for="contacusercheck1"></label></div>
-                                        </th>
-                                        <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-sm rounded-circle me-2" /><a href="#" class="text-body">Simon Ryles</a></td>
+                                        <th scope="row"><?= $i++ ?></th>
+                                        <td><img src="<?= $item->foto_perusahaan ?>" alt="" class="avatar-sm rounded-circle me-2" /><a href="#" class="text-body"><?= $item->nama_perusahaan ?></a></td>
                                         
-                                        <td>Jakarta</td>
-                                        <td>cindylo091@gmail.com</td>
-                                        <td><span class="badge badge-soft-success mb-0">Accepted</span></td>
-                                        
+                                        <td><?= $item->judul_pekerjaan ?></td>
+                                        <td><?= $item->nama_lokasi ?></td>
+                                        <td>
+                                            <?php
+                                                if ($item->status_lamaran == 'Diterima') {
+                                                    ?><span class="badge badge-soft-success mb-0">Diterima</span><?php
+                                                }elseif ($item->status_lamaran == 'Menunggu') {
+                                                    ?><span class="badge badge-soft-primary mb-0">Menunggu</span><?php
+                                                }elseif ($item->status_lamaran == 'Ditolak') {
+                                                    ?><span class="badge badge-soft-danger mb-0">Ditolak</span><?php
+                                                }
+                                            ?>
+                                         </td>
                                     </tr>
-                                   
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row g-0 align-items-center pb-4">
-                <div class="col-sm-6">
-                    <div><p class="mb-sm-0">Showing 1 to 10 of 57 entries</p></div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="float-sm-end">
-                        <ul class="pagination mb-sm-0">
-                            <li class="page-item disabled">
-                                <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-                            </li>
-                            <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item">
-                                <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>

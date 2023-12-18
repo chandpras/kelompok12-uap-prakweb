@@ -11,7 +11,7 @@ class ApplicantController extends BaseController
     public $applicantModel;
     public $userModel;
     protected $db, $builder;
-    protected $buildervac, $buildercomp;
+    protected $buildervac, $buildercomp, $buildersub;
 
     public function __construct()
     {
@@ -19,6 +19,7 @@ class ApplicantController extends BaseController
         $this->builder = $this->db->table('applicant');
         $this->buildercomp = $this->db->table('company');
         $this->buildervac = $this->db->table('lowongan');
+        $this->buildersub = $this->db->table('sublowongan');
         $this->applicantModel = new ApplicantModel();
         $this->userModel = new UserModel();
     }
@@ -162,7 +163,7 @@ class ApplicantController extends BaseController
 
     public function info($id = 0)
     {
-        $this->buildervac->select();
+        $this->buildervac->select('*, lowongan.id as vacid');
         $this->buildervac->where('lowongan.id', $id);
         $this->buildervac->join('lokasi', 'lokasi.id = lowongan.id_lokasi');
         $this->buildervac->join('company', 'company.id = lowongan.id_company');
@@ -175,7 +176,28 @@ class ApplicantController extends BaseController
     }
 
     public function notif(){
-        return view('applicant/notifikasi');
+
+        $auth = service('authentication');
+        $userId = $auth->id();
+
+        $this->builder->select('id');
+        $this->builder->where('id_user', $userId);
+        $queryidapp = $this->builder->get();
+
+        $this->buildersub->select('*, sublowongan.id as subid');
+        $this->buildersub->where('id_pelamar', $queryidapp->getRow()->id);
+        $this->buildersub->join('lowongan', 'lowongan.id = sublowongan.id_lowongan');
+        $this->buildersub->join('applicant', 'applicant.id = sublowongan.id_pelamar');
+        $this->buildersub->join('lokasi', 'lokasi.id = lowongan.id_lokasi');
+        $this->buildersub->join('company', 'company.id = lowongan.id_company');
+        $querysub = $this->buildersub->get();
+
+        $data = [
+            'title' => 'View Submission',
+            'submission' => $querysub->getResult(),
+        ];
+        
+        return view('applicant/notifikasi', $data);
     }
 
     public function morejob(){

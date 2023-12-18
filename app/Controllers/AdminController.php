@@ -51,12 +51,6 @@ class AdminController extends BaseController
             'job_count' => $query4->getNumRows(),
         ];
 
-        // $company = new CompanyModel();
-        // $data['company'] = $company->findAll();
-
-        // $applicant = new ApplicantModel();
-        // $data['applicant'] = $applicant->findAll();
-
         return view('admin/index', $data);
     }
 
@@ -69,12 +63,6 @@ class AdminController extends BaseController
         $query = $this->builder->get();
         
         $data['user'] = $query->getRow();
-        
-        // $company = new CompanyModel();
-        // $data['company'] = $company->findAll();
-
-        // $applicant = new ApplicantModel();
-        // $data['applicant'] = $applicant->findAll();
 
         if(empty($data['user'])){
             return redirect()->to('/admin');
@@ -85,7 +73,7 @@ class AdminController extends BaseController
 
     public function destroy($id)
     {
-        $this->builder->where('lowongan.id', $id);
+        $this->builder->where('id', $id);
         $this->builder->delete();
         $result = $this->builder->get();
 

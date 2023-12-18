@@ -61,24 +61,16 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="<?= base_url('/company') ?>" class="nav-item nav-link">Home</a>
-                    <a href="<?= base_url('/company/profile') ?>" class="nav-item nav-link active">Profile</a>
                 </div>
                 <a href="<?= base_url('logout') ?>" class="btn btn-primary py-2 px-4 ms-3">Logout</a>
             </div>
         </nav>
-
-        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
-            <div class="row py-5">
-                <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn">List Lowongan</h1>
-                    <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h5 text-white">Home</a>
-                    <i class="far fa-circle text-white px-2"></i>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- Navbar End -->
+
+    <!-- Profile Card Starts -->
+    <div class="bg-header-sec py-5">
+    </div>
 
   <!-- Profile Card Ends -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -88,7 +80,7 @@
         <div class="row align-items-center">
             <div class="col-md-6 mt-5">
                 <div class="mb-3 ">
-                    <h5 class="card-title">List</h5>
+                    <h3 class="card-title">List Lowongan Terbuka</h3>
                 </div>
             </div>
         </div>
@@ -96,7 +88,7 @@
             <div class="col-lg-12">
                 <div class="py-5">
                     <div class="table-responsive">
-                        <table class="table table-hover text-center">
+                        <table class="table project-list-table table-nowrap align-middle table-borderless">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -114,33 +106,32 @@
                                 <tr>
                                     <th scope="row"><?= $i++ ?></th>
                                     <td>
-                                    <h5>
-                                        <h5><?= $item->judul_pekerjaan ?></h1>
-                                    </h5>
+                                    <h6>
+                                        <?= $item->judul_pekerjaan ?>
+                                    </h6>
                                     </td>
                                     
                                     <td>
-                                    <h5>
-                                        <h5><?= $item->posisi_lowongan ?></h1>
-                                    </h5>
+                                    <h6>
+                                        <?= $item->posisi_lowongan ?>
                                     </td>
 
                                     <td>
-                                    <h5>
-                                        <h5><?= $item->tipe_pekerjaan ?></h1>
-                                    </h5>
+                                    <h6>
+                                        <?= $item->tipe_pekerjaan ?>
+                                    </h6>
                                     </td>
 
                                     <td>
-                                    <h5>
-                                        <h5><?= $item->gaji_pekerjaan ?></h1>
-                                    </h5>
+                                    <h6>
+                                        <?= $item->gaji_pekerjaan ?>
+                                    </h6>
                                     </td>
 
                                     <td>
-                                    <h5>
-                                        <h5><?= $item->nama_lokasi ?></h1>
-                                    </h5>
+                                    <h6>
+                                        <?= $item->nama_lokasi ?>
+                                    </h6>
                                     </td>
 
                                     <td>

@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\CompanyModel;
 use App\Models\LokasiModel;
 use App\Models\LowonganModel;
+use App\Models\SublowonganModel;
 use App\Models\UserModel;
 
 class LowonganController extends BaseController
@@ -14,13 +15,15 @@ class LowonganController extends BaseController
     public $lowonganModel;
     public $userModel;
     protected $db;
-    protected $builder, $buildercomp;
+    protected $builder, $buildercomp, $buildersub, $builderapp;
 
     public function __construct()
     {
         $this->db      = \Config\Database::connect();
         $this->builder = $this->db->table('lowongan');
         $this->buildercomp = $this->db->table('company');
+        $this->buildersub = $this->db->table('sublowongan');
+        $this->builderapp = $this->db->table('applicant');
         $this->lowonganModel = new LowonganModel();
         $this->companyModel = new CompanyModel();
         $this->userModel = new UserModel();
@@ -31,7 +34,8 @@ class LowonganController extends BaseController
         //
     }
 
-    public function viewLowongan(){
+    public function viewLowongan()
+    { // Views List Lowongan
 
         $auth = service('authentication');
         $userId = $auth->id();
@@ -39,17 +43,8 @@ class LowonganController extends BaseController
         $this->buildercomp->select('id');
         $this->buildercomp->where('id_user', $userId);
         $queryidcomp = $this->buildercomp->get();
-        
-        // $this->builder->select('company.id as id_company');
-        // $this->builder->where('company.id', $id);
-        // $query = $this->builder->get();
-        
-        // $data['company'] = $query->getRow();
 
-        // $companyModel = new CompanyModel();
-        // $this->lowonganModel = new LowonganModel();
-
-        $this->builder->select('lowongan.id as vacid, judul_pekerjaan, posisi_lowongan, tipe_pekerjaan, gaji_pekerjaan, nama_lokasi');
+        $this->builder->select('*, lowongan.id as vacid');
         $this->builder->where('id_company', $queryidcomp->getRow()->id);
         $this->builder->join('lokasi', 'lokasi.id = lowongan.id_lokasi');
         $this->builder->join('company', 'company.id = lowongan.id_company');
@@ -58,13 +53,13 @@ class LowonganController extends BaseController
         $data = [
             'title' => 'Create Lowongan',
             'lowongan' => $querylowongan->getResult(),
-            // 'id_company' => $companyModel,
         ];
-        // dd($data);
+        
         return view ('company/viewlowongan', $data);
     }
 
-    public function createLowongan(){
+    public function createLowongan()
+    { // Views Form Tambah Lowongan
 
         $lokasiModel = new LokasiModel();
 
@@ -74,8 +69,9 @@ class LowonganController extends BaseController
 
         return view ('company/create_lowongan', $data);
     }
+
     public function saveLowongan()
-    {
+    { // Fungsi Save Tambah Lowongan
 
         $path = 'assets/uploads/img/';
         $foto = $this->request->getFile('foto_lowongan');
@@ -105,7 +101,8 @@ class LowonganController extends BaseController
     }
 
     public function deleteLowongan($id)
-    {
+    { // Fungsi Delete Lowongan
+        
         $this->builder->where('id', $id);
         $this->builder->delete();
         $result = $this->builder->get();
@@ -117,12 +114,33 @@ class LowonganController extends BaseController
         return redirect()->back();
     }
 
-    public function listPelamar(){
-        return view('company/list_pelamar');
+    public function listPelamar()
+    { // Fungsi List Pelamar Lowongan Aktif
+
+        $auth = service('authentication');
+        $userId = $auth->id();
+
+        $this->buildercomp->select('company.id');
+        $this->buildercomp->where('id_user', $userId);
+        $queryidcomp = $this->buildercomp->get();
+
+        $this->buildersub->select('*, sublowongan.id as subid');
+        $this->buildersub->where('lowongan.id_company', $queryidcomp->getRow()->id);
+        $this->buildersub->join('lowongan', 'lowongan.id = sublowongan.id_lowongan');
+        $this->buildersub->join('applicant', 'applicant.id = sublowongan.id_pelamar');
+        $this->buildersub->join('lokasi', 'lokasi.id = lowongan.id_lokasi');
+        $this->buildersub->join('company', 'company.id = lowongan.id_company');
+        $this->buildersub->join('users', 'users.id = applicant.id_user');
+        $querysub = $this->buildersub->get();
+
+        $data = [
+            'title' => 'View Submission',
+            'submission' => $querysub->getResult(),
+        ];
+
+        return view('company/list_pelamar', $data);
     }
-    public function editPelamar(){
-        return view('company/status_pelamar');
-    }
+
     public function editLowongan(){
         return view('company/update_lowongan');
     }

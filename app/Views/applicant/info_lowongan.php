@@ -198,7 +198,7 @@
         </div>
     </div>
     <br>
-    <a href="<?= base_url('/tambah-sublowongan') ?>" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Daftar</a>
+    <a href="<?= base_url('/tambah-sublowongan/' . $item->vacid) ?>" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Daftar</a>
     <?php endforeach; ?>
 </div>
 

@@ -12,10 +12,10 @@ class SublowonganModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_company', 'judul_pekerjaan', 'posisi', 'tipe_pekerjaan', 'tugas', 'gaji', 'persyaratan_kerja', 'cv'];
+    protected $allowedFields    = ['status_lamaran', 'cv', 'id_lowongan', 'id_pelamar'];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -43,5 +43,9 @@ class SublowonganModel extends Model
     }
     public function saveSublowongan($data){
         $this->insert($data);
+    }
+
+    public function updateSublowongan($data, $id){
+        return $this->update($id, $data);
     }
 }

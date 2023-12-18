@@ -54,20 +54,15 @@
 		<div class="row">
 			<div class="col-12">
 				<!-- Page title -->
+				<?php foreach ($submission as $item): ?>
 				<div class="my-5">
-				<?php 
-							$auth = service('authentication');
-							$current_user = $auth->user();
-							$userId = $auth->id();
-						?>
-
-					<h3>Update Status Applicant</h3>
+					<h3>Update Status Submission Dari <?= $item->nama_pelamar ?></h3>
 					<hr>
 				</div>
 				<!-- Form START -->
-				<form action = "/save-sublowongan" method="post"  enctype="multipart/form-data">
+				<form action = "/update-status" method="post"  enctype="multipart/form-data">
 					<?= csrf_field() ?>
-
+                    <input type="hidden" class="form-control" name="id_sublowongan" value= "<?= $item->subid ?>">
                     <div class="container light-style flex-grow-1 container-p-y">
 						<div class="card overflow-hidden">
 							<div class="row no-gutters row-bordered row-border-light">
@@ -75,49 +70,30 @@
 									<div class="tab-content">
 										<div class="tab-pane fade active show" id="account-general">
 											<div class="card-body" >
-												<div class="col-md-12 mt-3 ">
-													<label for="judul_pekerjaan">Nama Lengkap</label>
-													<input type="text" style="width: 100%;" class="form-control" name="judul_pekerjaan" value="">
-												</div>
+												
+												<div class="card-body">
+													<div class="row">
+														<h5>Judul Pekerjaan</h5>
+														<p><?= $item->judul_pekerjaan ?></p>
+														
+														<h5>Posisi Lowongan</h5>
+														<p><?= $item->posisi_lowongan ?></p>
 
-												<div class="col-md-12 mt-3">
-													<label for="posisi">Jenis Kelamin</label>
-													<input type="text" class="form-control" name="posisi" value="">
-												</div>
-
-												<div class="col-md-12 mt-3">
-													<label for="tipe_pekerjaan">Alamat</label>
-                                                    <input type="text" class="form-control" name="posisi" value="">
-												</div>
-
-												<div class="col-md-12 mt-3">
-													<label for="tugas">No Telepon *</label>
-													<input type="text" class="form-control" name="tugas" value="">
+														<h5>Lokasi Pekerjaan</h5>
+														<p><?= $item->nama_lokasi ?></p>
+														
+														<h5>Gaji Pekerjaan</h5>
+														<p><?= $item->gaji_pekerjaan ?></p>
+													</div>
 												</div>
 												
-												<div class="col-md-12 mt-3">
-													<label for="gaji">Email</label>
-													<input type="text" class="form-control" name="gaji" value="">
-												</div>
-
-												<div class="col-md-12 mt-3">
-													<label for="persyaratan_kerja">Pendidikan Terakhir</label>
-													<input type="text" class="form-control" name="persyaratan_kerja" value="">
-												</div>
-											
-												<!-- Desc -->
-												<div class="col-md-12 mt-3">
-													<label for="cv" class="form-label">CV *</label>
-													<input type="text" class="form-control"  name="cv" value="">
-												</div>
-
-                                                <div class="col-md-12 mt-3">
-													<label for="cv" class="form-label">Status</label>
-                                                    <select class="form-control" name="jenis_kelamin" value="">
+                                                <div class="col-md-12">
+													<label for="status" class="form-label">Status</label>
+                                                    <select class="form-control" name="status" value="">
                                                         <option selected disabled>Pilih Status</option>
-                                                        <option value="1">Pending</option>
-                                                        <option value="2">Ditolak</option>
-                                                        <option value="2">Diterima</option>
+                                                        <option value="Menunggu">Menunggu</option>
+                                                        <option value="Diterima">Diterima</option>
+                                                        <option value="Ditolak">Ditolak</option>
                                                     </select>
 												</div>
 											</div>
@@ -135,6 +111,7 @@
 					</div>
 				</form> 
 				<!-- Form END -->
+				<?php endforeach; ?>
 		</div>
 	</div>
 

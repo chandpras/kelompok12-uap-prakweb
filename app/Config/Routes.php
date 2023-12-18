@@ -71,12 +71,11 @@ $routes->get('/create-lowongan', 'LowonganController::createLowongan', ['filter'
 $routes->post('/save-lowongan', 'LowonganController::saveLowongan', ['filter' => 'role:company']);
 $routes->delete('/delete-lowongan/(:num)', 'LowonganController::deleteLowongan/$1', ['filter' => 'role:company']);
 // $routes->get('/edit-lowongan', 'LowonganController::editLowongan', ['filter' => 'role:company']);
-// $routes->get('/list-pelamar', 'LowonganController::listPelamar', ['filter' => 'role:company']);
-// $routes->get('/edit-status', 'LowonganController::editPelamar', ['filter' => 'role:company']);
+$routes->get('/list-pelamar', 'LowonganController::listPelamar', ['filter' => 'role:company']);
 
 // Submission Lowongan Routes
-$routes->get('/sublowongan', 'SublowonganController::index', ['filter' => 'role:applicant']);
-$routes->get('/create-sublowongan', 'SublowonganController::createsublowongan', ['filter' => 'role:applicant']);
-$routes->get('/tambah-sublowongan', 'SublowonganController::tambahsublowongan', ['filter' => 'role:applicant']);
+$routes->get('/tambah-sublowongan/(:num)', 'SublowonganController::tambahsublowongan/$1', ['filter' => 'role:applicant']);
 $routes->post('/save-sublowongan', 'SublowonganController::savesublowongan', ['filter' => 'role:applicant']);
-$routes->get('/simpan-sublowongan', 'SublowonganController::simpansublowongan', ['filter' => 'role:applicant']);
+$routes->get('/download-cv/(:num)', 'SublowonganController::downloadFile/$1', ['filter' => 'role:company']);
+$routes->get('/edit-status/(:num)', 'SublowonganController::editSubmission/$1', ['filter' => 'role:company']);
+$routes->post('/update-status', 'SublowonganController::updateSubmission', ['filter' => 'role:company']);

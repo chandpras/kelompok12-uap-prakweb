@@ -61,7 +61,6 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="<?= base_url('/company') ?>" class="nav-item nav-link">Home</a>
-                    <a href="<?= base_url('/company/profile') ?>" class="nav-item nav-link active">Profile</a>
                 </div>
                 <a href="<?= base_url('logout') ?>" class="btn btn-primary py-2 px-4 ms-3">Logout</a>
             </div>
@@ -73,6 +72,7 @@
   <!-- Profile Card Starts -->
   <div class="bg-header-sec py-5">
   </div>
+
   <!-- Profile Card Ends -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
@@ -81,7 +81,7 @@
         <div class="row align-items-center">
             <div class="col-md-6 mt-5">
                 <div class="mb-3 ">
-                    <h5 class="card-title">List</h5>
+                    <h3 class="card-title">List Pelamar</h3>
                 </div>
             </div>
         </div>
@@ -89,92 +89,55 @@
             <div class="col-lg-12">
                 <div class="">
                     <div class="table-responsive">
-                        <table class="table project-list-table table-nowrap align-middle table-borderless">
+                        <table class="table project-list-table table-nowrap align-middle table-borderless text-center">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="ps-4" style="width: 50px;">
-                                        <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
-                                    </th>
+                                    <th scope="col">#</th>
                                     <th scope="col">Nama Pelamar</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Tipe Pekerjaan</th>
-                                    <th scope="col">CV</th>
+                                    <th scope="col">Judul Pekerjaan</th>
+                                    <th scope="col">Lokasi</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col" colspan="2">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row" class="ps-4">
-                                        <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" /><label class="form-check-label" for="contacusercheck1"></label></div>
-                                    </th>
-                                    <td>
-                                    <h5>
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($submission as $item): ?>
+                                    <tr>
+                                        <th scope="row"><?= $i++ ?></th>
+                                        <td><img src="<?= $item->foto_pelamar ?>" alt="" class="avatar-sm rounded-circle me-2" /><a href="#" class="text-body"><?= $item->nama_pelamar ?></a></td>
+                                        
+                                        <td><?= $item->email ?></td>
 
-                                    </h5>
-                                    </td>
+                                        <td><?= $item->judul_pekerjaan ?></td>
 
-                                    <td>
-                                    <h5>
-                                    
-                                    </h5>
-                                    </td>
+                                        <td><?= $item->nama_lokasi ?></td>
 
-                                    <td>
-                                    <h5>
-                                    
-                                    </h5>
-                                    </td>
+                                        <td>
+                                            <?php
+                                                if ($item->status_lamaran == 'Diterima') {
+                                                    ?><span class="badge badge-soft-success mb-0">Diterima</span><?php
+                                                }elseif ($item->status_lamaran == 'Menunggu') {
+                                                    ?><span class="badge badge-soft-primary mb-0">Menunggu</span><?php
+                                                }elseif ($item->status_lamaran == 'Ditolak') {
+                                                    ?><span class="badge badge-soft-danger mb-0">Ditolak</span><?php
+                                                }
+                                            ?>
+                                         </td>
 
-                                    <td>
-                                    <h5>
-                                    
-                                    </h5>
-                                    </td>
+                                         <td>
+                                            <a href="<?= base_url('/download-cv/' . $item->subid) ?>">PDF</a>
+                                         </td>
 
-                                    <td>
-                                    <h5>
-                                    
-                                    </h5>
-                                    </td>
-
-                                    <td>
-                                    <ul class="list-inline mb-0">
-                                      <li class="list-inline-item">
-                                          <a href="<?= base_url('/edit-status')?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
-                                      </li>
-                                    </ul>
-                                    </td>
-
-                                </tr>
+                                         <td>
+                                            <a href="<?= base_url('/edit-status/' . $item->subid) ?>">Edit</a>
+                                         </td>
+                                    </tr>
+                                    <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row g-0 align-items-center pb-4">
-            <div class="col-sm-6">
-                <div><p class="mb-sm-0">Showing 1 to 10 of 57 entries</p></div>
-            </div>
-            <div class="col-sm-6">
-                <div class="float-sm-end">
-                    <ul class="pagination mb-sm-0">
-                        <li class="page-item disabled">
-                            <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-                        </li>
-                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item">
-                            <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>

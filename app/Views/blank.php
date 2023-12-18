@@ -78,7 +78,7 @@
                         }else if(in_groups('company')){
                             echo base_url('/company');
                         }
-                    ?>" class="nav-item nav-link">Home</a>>
+                    ?>" class="nav-item nav-link">Home</a>
                 </div>
                 <a href="<?= base_url('logout') ?>" class="btn btn-primary py-2 px-4 ms-3">Logout</a>
             </div>

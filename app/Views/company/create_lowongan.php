@@ -130,7 +130,7 @@
 																	<i class="bi bi-briefcase-fill text-primary"></i>
 																</div>
 																<!-- Button -->
-																<input type="file" name="foto_lowongan">
+																<input type="file" name="foto_lowongan" accept="image/png, image/jpeg">
 															</div>
 														</div>
 													</div>

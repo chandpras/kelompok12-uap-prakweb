@@ -95,8 +95,8 @@
                     <a href="" class="h5 text-white mr-3">Home</a>
                     <i class="far fa-circle text-white px-2"></i>
                 </div>
-                <div class="d-grid gap-2 col-6 mt-5 mx-auto">
-                  <a href="<?= base_url('/create-lowongan') ?>" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Tambah Lowongan</a>
+                <div class="d-grid gap-2 col-3 mt-5 mx-auto">
+                  <a href="<?= base_url('/list-lowongan') ?>" class="btn btn-primary btn-lg btn-block text-white btn-search mb-2"><span class="icon-search icon mr-2"></span>Tambah Lowongan</a>
                   <a href="<?= base_url('/list-pelamar') ?>" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Lihat Pelamar</a>
                 </div>
             </div>

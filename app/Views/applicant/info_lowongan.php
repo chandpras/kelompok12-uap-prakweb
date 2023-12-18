@@ -61,8 +61,6 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="<?= base_url('/applicant') ?>" class="nav-item nav-link">Home</a>
-                    <a href="<?= base_url('/applicant/profile') ?>" class="nav-item nav-link active">Profile</a>
-                    <a href="<?= base_url('/applicant/notification') ?>" class="nav-item nav-link">Notifikasi</a>
                 </div>
                 <a href="<?= base_url('logout') ?>" class="btn btn-primary py-2 px-4 ms-3">Logout</a>
             </div>
@@ -71,6 +69,7 @@
     <!-- Navbar End -->
 
   <!-- Profile Card Starts -->
+  <?php foreach ($infovac as $item): ?>
   <div class="bg-header-sec py-5">
     <div class="container py-5">
       <div class="main-body py-5">
@@ -79,11 +78,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="candidates-profile-details text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-fluid d-block mx-auto rounded-circle img-thumbnail mb-4">
-                        <h4 class="text-white candidates-profile-name mb-2">Michael Brown</h4>
-                        <p class="text-white-50 mb-2"><i class="mdi mdi-bank mr-2"></i>Web Themes.pvt.Ltd</p>
+                        <img src="<?= $item->foto_perusahaan ?? base_url('assets/img/defaultimg.jpg');?>" class="img-fluid d-block mx-auto rounded-circle img-thumbnail mb-4">
+                        <h4 class="text-white candidates-profile-name mb-2"><?= $item->nama_perusahaan ?></h4>
+                        <p class="text-white-50 mb-2"><i class="mdi mdi-bank mr-2"></i> <?= $item->bidang_perusahaan ?></p>
                         <ul class="candidates-profile-icons list-inline mb-3">
-                            <li class="list-inline-item text-white-50 pr-2 f-16">PHP Developer</li>
                             <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star"></i></a></li>
                             <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star"></i></a></li>
                             <li class="list-inline-item"><a href="#" class="text-warning"><i class="mdi mdi-star"></i></a></li>
@@ -114,14 +112,14 @@
     <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="text-dark">Deskripsi Perusahaan</h3>
+            <h3 class="text-dark py-3">Deskripsi Perusahaan</h3>
+            <h5><?= $item->deskripsi_perusahaan ?></h5>
         </div>
     </div>
 
     <div class="row">
         <div class="col-lg-12">
-            <div class="job-detail mt-2 p-4">
-                
+            <div class="job-detail mb-2">
                 <hr>
                 <ul class="list-inline mt-3 mb-0">
                     <li class="list-inline-item mr-3">
@@ -147,76 +145,48 @@
     <div class="row">
         <div class="col-lg-12">
             <h3 class="text-dark mt-4">Judul Pekerjaan</h3>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="job-detail mt-2 p-4">
-               <!-- untuk isi -->
-            </div>
+            <h5><?= $item->judul_pekerjaan ?></h5>
+            <hr>
         </div>
     </div>
 
     <div class="row">
         <div class="col-lg-12">
             <h3 class="text-dark mt-4">Posisi</h3>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="job-detail mt-2 p-4">
-               <!-- untuk isi -->
-            </div>
+            <h5><?= $item->posisi_lowongan ?></h5>
+            <hr>
         </div>
     </div>
 
     <div class="row">
         <div class="col-lg-12">
             <h3 class="text-dark mt-4">Tipe Pekerjaan</h3>
+            <h5><?= $item->tipe_pekerjaan ?></h5>
+            <hr>
         </div>
     </div>
 
     <div class="row">
         <div class="col-lg-12">
-            <div class="job-detail mt-2 p-4">
-               <!-- untuk isi -->
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <h3 class="text-dark mt-4">Tugas</h3>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="job-detail mt-2 p-4">
-               <!-- untuk isi -->
-            </div>
+            <h3 class="text-dark mt-4">Deskripsi</h3>
+            <h5><?= $item->deskripsi_pekerjaan ?></h5>
+            <hr>
         </div>
     </div>
 
     <div class="row">
         <div class="col-lg-12">
             <h3 class="text-dark mt-4">Gaji</h3>
+            <h5><?= $item->gaji_pekerjaan ?></h5>
+            <hr>
         </div>
     </div>
 
     <div class="row">
         <div class="col-lg-12">
-            <div class="job-detail mt-2 p-4">
-               <!-- untuk isi -->
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <h3 class="text-dark mt-4">Persyaratan Kerja</h3>
+            <h3 class="text-dark mt-4">Lokasi</h3>
+            <h5><?= $item->nama_lokasi ?></h5>
+            <hr>
         </div>
     </div>
 
@@ -229,6 +199,7 @@
     </div>
     <br>
     <a href="<?= base_url('/tambah-sublowongan') ?>" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Daftar</a>
+    <?php endforeach; ?>
 </div>
 
 </section>

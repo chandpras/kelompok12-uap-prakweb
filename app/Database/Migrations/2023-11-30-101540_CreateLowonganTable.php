@@ -20,7 +20,7 @@ class CreateLowonganTable extends Migration
                 'constraint' => '50',
                 'null' => true,
             ],
-            'posisi' => [
+            'posisi_lowongan' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
                 'null' => true,
@@ -30,23 +30,24 @@ class CreateLowonganTable extends Migration
                 'constraint' => '255',
                 'null' => true,
             ],
-            'tugas' => [
+            'deskripsi_pekerjaan' => [
                 'type' => 'TEXT',
                 'null' => true,
             ],
-            'gaji' => [
+            'gaji_pekerjaan' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
                 'null' => true,
             ],
-            'persyaratan_kerja'=> [
-                'type' => 'TEXT',
-                'null' => true,
-            ],
-            'cv'=> [
+            'foto_lowongan'=> [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
                 'null' => true,
+            ],
+            'id_lokasi'=> [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
             ],
             'id_company'=> [
                 'type' => 'INT',
@@ -71,6 +72,7 @@ class CreateLowonganTable extends Migration
 
         $this->forge->addKey('id', true, true);
         $this->forge->addForeignKey('id_company','company','id','CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_lokasi','lokasi','id','CASCADE', 'CASCADE');
         $this->forge->createTable('lowongan');
     
     }

@@ -66,13 +66,20 @@
                 <a href="<?= base_url('logout') ?>" class="btn btn-primary py-2 px-4 ms-3">Logout</a>
             </div>
         </nav>
+
+        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+            <div class="row py-5">
+                <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+                    <h1 class="display-4 text-white animated zoomIn">List Lowongan</h1>
+                    <i class="far fa-circle text-white px-2"></i>
+                    <a href="" class="h5 text-white">Home</a>
+                    <i class="far fa-circle text-white px-2"></i>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Navbar End -->
 
-
-  <!-- Profile Card Starts -->
-  <div class="bg-header-sec py-5">
-  </div>
   <!-- Profile Card Ends -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
@@ -87,118 +94,73 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="">
+                <div class="py-5">
                     <div class="table-responsive">
-                        <table class="table project-list-table table-nowrap align-middle table-borderless">
+                        <table class="table table-hover text-center">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="ps-4" style="width: 50px;">
-                                        <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
-                                    </th>
+                                    <th scope="col">#</th>
                                     <th scope="col">Judul Pekerjaan</th>
                                     <th scope="col">Posisi</th>
                                     <th scope="col">Tipe Pekerjaan</th>
-                                    <th scope="col">Tugas</th>
                                     <th scope="col">Gaji</th>
-                                    <th scope="col">Persyaratan Kerja</th>
+                                    <th scope="col">Lokasi</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $i = 1; ?>
+                                <?php foreach ($lowongan as $item): ?>
                                 <tr>
-                                    <th scope="row" class="ps-4">
-                                        <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" /><label class="form-check-label" for="contacusercheck1"></label></div>
-                                    </th>
+                                    <th scope="row"><?= $i++ ?></th>
                                     <td>
                                     <h5>
-                                    <?php foreach ($lowongan as $item): ?>
                                         <h5><?= $item->judul_pekerjaan ?></h1>
-                                    <?php endforeach; ?>
                                     </h5>
                                     </td>
                                     
                                     <td>
                                     <h5>
-                                    <?php foreach ($lowongan as $item): ?>
-                                        <h5><?= $item->posisi ?></h1>
-                                    <?php endforeach; ?>
+                                        <h5><?= $item->posisi_lowongan ?></h1>
                                     </h5>
                                     </td>
 
                                     <td>
                                     <h5>
-                                    <?php foreach ($lowongan as $item): ?>
                                         <h5><?= $item->tipe_pekerjaan ?></h1>
-                                    <?php endforeach; ?>
                                     </h5>
                                     </td>
 
                                     <td>
                                     <h5>
-                                    <?php foreach ($lowongan as $item): ?>
-                                        <h5><?= $item->tugas ?></h1>
-                                    <?php endforeach; ?>
+                                        <h5><?= $item->gaji_pekerjaan ?></h1>
                                     </h5>
                                     </td>
 
                                     <td>
                                     <h5>
-                                    <?php foreach ($lowongan as $item): ?>
-                                        <h5><?= $item->gaji ?></h1>
-                                    <?php endforeach; ?>
+                                        <h5><?= $item->nama_lokasi ?></h1>
                                     </h5>
                                     </td>
 
                                     <td>
-                                    <h5>
-                                    <?php foreach ($lowongan as $item): ?>
-                                        <h5><?= $item->persyaratan_kerja ?></h1>
-                                    <?php endforeach; ?>
-                                    </h5>
+                                        <form action="<?= base_url('/delete-lowongan/' . $item->vacid) ?>" method="post">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <?= csrf_field() ?>
+                                            <button type="submit" class="btn-primary">Delete</button>
+                                        </form>
                                     </td>
-
-                                    <td>
-                                    <ul class="list-inline mb-0">
-                                      <li class="list-inline-item">
-                                          <a href="<?= base_url('/edit-lowongan')?>" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
-                                      </li>
-                                      <li class="list-inline-item">
-                                          <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
-                                      </li>
-                                    </ul>
-                                    </td>
-
                                 </tr>
+                                <?php endforeach; ?>
+
                                 <div class="row">
                                   <div class="col-sm-12">
-                                        <a href="<?= base_url('/tambah-lowongan' )?>" class="btn btn-primary" >Tambah Data</a>
+                                        <a href="<?= base_url('/create-lowongan' )?>" class="btn btn-primary" >Tambah Data</a>
                                   </div>
                                 </div>
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row g-0 align-items-center pb-4">
-            <div class="col-sm-6">
-                <div><p class="mb-sm-0">Showing 1 to 10 of 57 entries</p></div>
-            </div>
-            <div class="col-sm-6">
-                <div class="float-sm-end">
-                    <ul class="pagination mb-sm-0">
-                        <li class="page-item disabled">
-                            <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-                        </li>
-                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item">
-                            <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>

@@ -102,7 +102,7 @@
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                       <h6 class="mb-0"><i class="bi bi-globe mx-2"></i>Socials</h6>
-                      <span class="text-primary">
+                      <span class="text-primary">@
                         <?php foreach ($applicant as $item): ?>
                             <?= $item->medsos ?>
                         <?php endforeach; ?>

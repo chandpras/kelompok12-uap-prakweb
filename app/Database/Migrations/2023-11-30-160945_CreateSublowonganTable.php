@@ -15,32 +15,9 @@ class CreateSublowonganTable extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'judul_pekerjaan' => [
+            'status_lamaran' => [
                 'type' => 'VARCHAR',
                 'constraint' => '50',
-                'null' => true,
-            ],
-            'posisi' => [
-                'type' => 'VARCHAR',
-                'constraint' => '255',
-                'null' => true,
-            ],
-            'tipe_pekerjaan' => [
-                'type' => 'VARCHAR',
-                'constraint' => '255',
-                'null' => true,
-            ],
-            'tugas' => [
-                'type' => 'TEXT',
-                'null' => true,
-            ],
-            'gaji' => [
-                'type' => 'VARCHAR',
-                'constraint' => '255',
-                'null' => true,
-            ],
-            'persyaratan_kerja'=> [
-                'type' => 'TEXT',
                 'null' => true,
             ],
             'cv'=> [
@@ -48,7 +25,12 @@ class CreateSublowonganTable extends Migration
                 'constraint' => '255',
                 'null' => true,
             ],
-            'id_company'=> [
+            'id_lowongan'=> [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
+            ],
+            'id_pelamar'=> [
                 'type' => 'INT',
                 'constraint' => 5,
                 'unsigned' => true,
@@ -70,7 +52,8 @@ class CreateSublowonganTable extends Migration
         ]);
 
         $this->forge->addKey('id', true, true);
-        $this->forge->addForeignKey('id_company','company','id','CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_lowongan','lowongan','id','CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_pelamar','applicant','id','CASCADE', 'CASCADE');
         $this->forge->createTable('sublowongan');
     }
 

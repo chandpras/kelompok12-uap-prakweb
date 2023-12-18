@@ -531,10 +531,6 @@ form{
     color: #89ba16; 
 }
 
-body{
-    margin-top:20px;
-    background:#f5f7fa;
-}
 .panel.panel-default {
     border-top-width: 3px;
 }
@@ -553,7 +549,6 @@ body{
     height: 48px!important;
 }
 
-body{margin-top:20px;}
 .candidates-profile-bg {
   padding: 180px 0px 80px 0px;
   background-image: url("https://www.bootdey.com/img/Content/bg1.jpg");
@@ -683,9 +678,6 @@ body{margin-top:20px;}
     position: relative;
 }
 
-body{margin-top:20px;
-    background-color:#eee;
-    }
     .project-list-table {
         border-collapse: separate;
         border-spacing: 0 12px
@@ -762,7 +754,6 @@ body{margin-top:20px;
 
     body{
         background: #f5f5f5;
-        margin-top:20px;
     }
     
     .ui-w-80 {
@@ -786,13 +777,8 @@ body{margin-top:20px;
         color: #26B4FF;
     }
     
-
     .btn {
         cursor: pointer;
-    }
-    
-    .text-light {
-        color: #babbbc !important;
     }
     
     .btn-facebook {

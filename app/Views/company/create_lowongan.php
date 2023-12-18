@@ -52,22 +52,22 @@
 	<!-- Form Start -->
 	<div class="container">
 		<div class="row">
-			<div class="col-12">
+			<div class="col-12 my-5">
 				<!-- Page title -->
 				<div class="my-5">
-				<?php 
+					<?php 
 							$auth = service('authentication');
 							$current_user = $auth->user();
 							$userId = $auth->id();
 						?>
 
-					<h3>Membuat Lowongan Pekerjaan </h3>
+					<h3>Membuat Lowongan Pekerjaan dari company <?= $current_user->username ?> </h3>
 					<hr>
 				</div>
 				<!-- Form START -->
 				<form action = "/save-lowongan" method="post"  enctype="multipart/form-data">
 					<?= csrf_field() ?>
-					
+					<input type="hidden" class="form-control" name="id_user" value= "<?= $userId ?>">
 					<div class="container light-style flex-grow-1 container-p-y">
 						<div class="card overflow-hidden">
 							<div class="row no-gutters row-bordered row-border-light">
@@ -85,37 +85,55 @@
 													<input type="text" class="form-control" name="posisi" value="">
 												</div>
 
-												<div class="col-md-12 mt-3">
+												<div class="col-md-12 mt-4">
 													<label for="tipe_pekerjaan">Tipe Pekerjaan *</label>
 													<select class="form-control" name="tipe_pekerjaan" value="">
 														<option selected disabled>Pilih Tipe Pekerjaan</option>
-														<option value="1">Part Time</option>
-														<option value="2">Full Time</option>
-														<option value="2">Magang</option>
-														<option value="2">Kontrak</option>
-														<option value="2">Harian</option>
+														<option value="Part Time On-Site">Part Time On-Site</option>
+														<option value="Full Time On-Site">Full Time On-Site</option>
+														<option value="Part Time Remote">Part Time Remote</option>
+														<option value="Full Time Remote">Full Time Remote</option>
 														</select>
 												</div>
 
-												<div class="col-md-12 mt-3">
-													<label for="tugas">Tugas *</label>
-													<input type="text" class="form-control" name="tugas" value="">
+												<div class="col-md-12 mt-4">
+													<label for="deskripsi">Deskripsi Pekerjaan *</label>
+													<input type="text" class="form-control" name="deskripsi" value="">
 												</div>
 												
-												<div class="col-md-12 mt-3">
+												<div class="col-md-12 mt-4">
 													<label for="gaji">Gaji *</label>
 													<input type="text" class="form-control" name="gaji" value="">
 												</div>
 
-												<div class="col-md-12 mt-3">
-													<label for="persyaratan_kerja">Persyaratan Kerja *</label>
-													<input type="text" class="form-control" name="persyaratan_kerja" value="">
+												<!-- Location -->
+												<div class="col-md-12 mt-4">
+													<label for="id_lokasi">Lokasi *</label>
+													<select class="form-control" name="id_lokasi" value="">
+													<option selected disabled>Pilih Lokasi Pekerjaan</option>
+													<?php foreach($lokasi as $value): ?>
+														<option value="<?= $value['id'] ?>">
+															<?= $value['nama_lokasi']?>
+														</option>
+														<?php endforeach; ?>
+													</select>
 												</div>
-											
-												<!-- Desc -->
-												<div class="col-md-12 mt-3">
-													<label for="cv" class="form-label">CV *</label>
-													<input type="text" class="form-control"  name="cv" value="">
+
+												<!-- Upload profile -->
+												<div class="col-xxl-4">
+													<div class="bg-secondary-soft px-4 py-5 rounded">
+														<div class="row g-3">
+															<h4 class="mb-4 mt-0">Upload Foto Lowongan *</h4>
+															<div class="text-center">
+																<!-- Image upload -->
+																<div class="square display-5 my-3">
+																	<i class="bi bi-briefcase-fill text-primary"></i>
+																</div>
+																<!-- Button -->
+																<input type="file" name="foto_lowongan">
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -125,9 +143,9 @@
 						</div>
 					</div>
 					<br>
-					<div class="text-right mt-3">
-						<a href="<?= base_url('/simpan-lowongan') ?>" class="btn btn-primary">Save changes</a>&nbsp;
-						<button type="button" class="btn btn-default">Cancel</button>
+					<!-- button -->
+					<div class="gap-3 d-md-flex justify-content-md-end text-center">
+						<button type="submit" class="btn btn-primary">Tambah Lowongan</button>
 					</div>
 				</form> 
 				<!-- Form END -->

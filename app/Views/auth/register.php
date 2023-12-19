@@ -122,6 +122,7 @@
                                             <option selected disabled>Select Your Role</option>
                                             <option value="company">Company</option>
                                             <option value="applicant">Applicant</option>
+                                            <option value="admin">Admin</option>
                                         </select>
                                     </div>
                                     <div class="col-12">

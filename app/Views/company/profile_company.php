@@ -89,9 +89,14 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
-                    <img src="<?php foreach ($company as $item): ?>
+                    <?php
+                          if ($check == 1) {
+                            ?>
+                            <img src="<?php foreach ($company as $item): ?>
                             <?= $item->foto_perusahaan ?? base_url('assets/img/defaultimg.jpg');?> 
                             <?php endforeach;  ?>" alt="Foto" class="rounded-circle" width="150">
+                            <?php
+                          }?>
                       <div class="mt-3">
                       <?php 
                           $auth = service('authentication');

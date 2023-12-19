@@ -78,9 +78,9 @@
         <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn">Logged in as <?= $currentUser->username ?></h1>
+                    <h1 class="display-4 text-white animated zoomIn">Home</h1>
                     <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h5 text-white">Home</a>
+                    <a href="" class="h5 text-white">Logged in as <?= $currentUser->username ?></a>
                     <i class="far fa-circle text-white px-2"></i>
                 </div>
             </div>
@@ -140,7 +140,7 @@
                         <th scope="col">Username</th>
                         <th scope="col">Email</th>
                         <th scope="col">Role</th>
-                        <th scope="col" colspan="2">Action</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -152,13 +152,10 @@
                         <td><?= $user->email; ?></td>
                         <td><?= $user->name; ?></td>
                         <td>
-                            <a href="<?= base_url('admin/user-profile/' . $user->userid) ?>">Detail</a>
-                        </td>
-                        <td>
                             <form action="<?= base_url('admin/user-delete/' . $user->userid) ?>" method="post">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <?= csrf_field() ?>
-                                <button type="submit" onclick="alert('Anda yakin ingin menghapus user tersebut?')" class="btn-primary">Delete</button>
+                                <button type="submit" class="btn-primary">Delete</button>
                             </form>
                         </td>
                     </tr>

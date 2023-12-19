@@ -11,12 +11,13 @@ class ApplicantController extends BaseController
     public $applicantModel;
     public $userModel;
     protected $db, $builder;
-    protected $buildervac, $buildercomp, $buildersub;
+    protected $buildervac, $buildercomp, $buildersub, $builderuser;
 
     public function __construct()
     {
         $this->db      = \Config\Database::connect();
         $this->builder = $this->db->table('applicant');
+        $this->builderuser = $this->db->table('users');
         $this->buildercomp = $this->db->table('company');
         $this->buildervac = $this->db->table('lowongan');
         $this->buildersub = $this->db->table('sublowongan');
@@ -27,6 +28,44 @@ class ApplicantController extends BaseController
     public function index()
     {
 
+        $auth = service('authentication');
+        $userId = $auth->id();
+
+        // Select company attributes
+        $this->builder->select();
+        $this->builder->where('id_user', $userId);
+        $query = $this->builder->get();
+
+        // Check if there are any results
+        if ($query->getNumRows() > 0) {
+            // Results found, return true (1)
+            $check = 1;
+        } else {
+            // No results found, return false (0)
+            $check = 0;
+        }
+
+        $this->builderuser->select('users.id as userid, username, email, name');
+        $this->builderuser->where('name !=', 'admin');
+        $this->builderuser->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $this->builderuser->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $query = $this->builderuser->get();
+
+        $this->builderuser->select('users.id as userid, username, email, name');
+        $this->builderuser->where('name', 'applicant');
+        $this->builderuser->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $this->builderuser->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $query2 = $this->builderuser->get();
+
+        $this->builderuser->select('users.id as userid, username, email, name');
+        $this->builderuser->where('name', 'company');
+        $this->builderuser->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $this->builderuser->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $query3 = $this->builderuser->get();
+
+        $this->buildervac->select();
+        $query4 = $this->buildervac->get();
+
         // Vacancy & Company Data Display
         $this->buildervac->select('lowongan.id as vacid, judul_pekerjaan, posisi_lowongan, tipe_pekerjaan, gaji_pekerjaan, foto_lowongan, nama_lokasi, lowongan.updated_at');
         $this->buildervac->join('lokasi', 'lokasi.id = lowongan.id_lokasi');
@@ -35,10 +74,14 @@ class ApplicantController extends BaseController
 
         $data = [
             'vacancy'   => $queryvacancy->getResult(),
+            'check'     => $check,
+            'users' => $query->getResult(),
+            'applicant_count' => $query2->getNumRows(),
+            'company_count' => $query3->getNumRows(),
+            'job_count' => $query4->getNumRows(),
         ];
 
         return view('applicant/index', $data);
-        // dd($data);
     }
 
     public function profile()

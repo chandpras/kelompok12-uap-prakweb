@@ -24,13 +24,28 @@ class CompanyController extends BaseController
 
     public function index()
     {
-        // $data_user = $this->userModel->getUsers();
-        // $data =[
-        //     'title ' => 'Edit'
-        // ];
+        $auth = service('authentication');
+        $userId = $auth->id();
 
-        // return view('edit_company');
-        return view('company/index');
+        // Select company attributes
+        $this->builder->select();
+        $this->builder->where('id_user', $userId);
+        $query = $this->builder->get();
+
+        // Check if there are any results
+        if ($query->getNumRows() > 0) {
+            // Results found, return true (1)
+            $check = 1;
+        } else {
+            // No results found, return false (0)
+            $check = 0;
+        }
+
+        $data = [
+            'check'     => $check
+        ];
+
+        return view('company/index', $data);
     }
 
     public function profile()

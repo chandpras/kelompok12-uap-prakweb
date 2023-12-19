@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+	<title>Home Applicant</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Favicon -->
     <link href="<?=base_url("img/favicon.ico")?>" rel="icon">
 

@@ -44,4 +44,9 @@ class LowonganModel extends Model
     public function saveLowongan($data){
         $this->insert($data);
     }
+    public function updateLowongan($data, $id){
+        return $this->update($id, $data);
+    }
+
+
 }

@@ -31,7 +31,8 @@ class LowonganController extends BaseController
 
     public function index()
     {
-        //
+       //
+
     }
 
     public function viewLowongan()
@@ -141,7 +142,4 @@ class LowonganController extends BaseController
         return view('company/list_pelamar', $data);
     }
 
-    public function editLowongan(){
-        return view('company/update_lowongan');
-    }
 }

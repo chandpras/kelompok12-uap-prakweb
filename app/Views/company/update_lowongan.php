@@ -76,6 +76,8 @@
 									<div class="tab-content">
 										<div class="tab-pane fade active show" id="account-general">
 											<div class="card-body" >
+											<input type="hidden" class="form-control" name="id_user" value= "<?= $userId ?>">
+									<input type="hidden" class="form-control" name="id_profil" value= "<?= $company_data[0]->id ?>">
 												<div class="col-md-12 mt-3 ">
 													<label for="judul_pekerjaan">Judul Pekerjaan *</label>
 													<input type="text" style="width: 100%;" class="form-control" name="judul_pekerjaan" value="">

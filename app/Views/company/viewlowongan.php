@@ -139,7 +139,8 @@
                                         <form action="<?= base_url('/delete-lowongan/' . $item->vacid) ?>" method="post">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <?= csrf_field() ?>
-                                            <button type="submit" class="btn-primary">Delete</button>
+                                            <button type="submit" onclick="alert('Anda yakin ingin menghapus lowongan tersebut?')" class="btn-primary">Delete</button>
+                                            
                                         </form>
                                     </td>
                                 </tr>

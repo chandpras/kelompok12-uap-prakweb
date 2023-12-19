@@ -87,49 +87,7 @@
         </div>
     </div>
     <!-- Navbar End -->
-    
-    <section class="home-section section-hero overlay bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
 
-      <a href="#next" class="scroll-button smoothscroll">
-        <span class=" icon-keyboard_arrow_down"></span>
-      </a>
-
-    </section>
-
-    <!-- About Start -->
-    <div class="container-fluid wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-7">
-                    <div class="section-title position-relative pb-3 mb-5">
-                        <h1 class="mb-0">Platform Online yang Menyediakan Daftar Pekerjaan dari Berbagai Perusahaan dan Industri</h1>
-                    </div>
-                    <p class="mb-4">Situs ini memungkinkan pencari kerja untuk mencari pekerjaan sesuai dengan kriteria mereka, seperti lokasi, industri, pengalaman, dan pendidikan. Informasi pekerjaan termasuk deskripsi tugas, persyaratan, gaji, dan cara melamar.</p>
-                    <div class="row g-0 mb-3">
-                        <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>24/7 Information Support</h5>
-                            <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Professional Staff</h5>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-phone-alt text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Call to ask any question</h5>
-                            <h4 class="text-primary mb-0">+62 821 6510 0647</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="<?=base_url("assets/img/about.jpg")?>" style="object-fit: cover;">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
 
     <!-- Facts Start -->
     <div class="container-fluid facts py-5 my-1 pt-lg-0">
@@ -200,7 +158,7 @@
                             <form action="<?= base_url('admin/user-delete/' . $user->userid) ?>" method="post">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <?= csrf_field() ?>
-                                <button type="submit" class="btn-primary">Delete</button>
+                                <button type="submit" onclick="alert('Anda yakin ingin menghapus user tersebut?')" class="btn-primary">Delete</button>
                             </form>
                         </td>
                     </tr>

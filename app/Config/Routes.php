@@ -70,7 +70,7 @@ $routes->get('/list-lowongan', 'LowonganController::viewLowongan', ['filter' => 
 $routes->get('/create-lowongan', 'LowonganController::createLowongan', ['filter' => 'role:company']);
 $routes->post('/save-lowongan', 'LowonganController::saveLowongan', ['filter' => 'role:company']);
 $routes->delete('/delete-lowongan/(:num)', 'LowonganController::deleteLowongan/$1', ['filter' => 'role:company']);
-// $routes->get('/edit-lowongan', 'LowonganController::editLowongan', ['filter' => 'role:company']);
+$routes->get('/edit-lowongan', 'LowonganController::editLowongan', ['filter' => 'role:company']);
 $routes->get('/list-pelamar', 'LowonganController::listPelamar', ['filter' => 'role:company']);
 
 // Submission Lowongan Routes
@@ -79,3 +79,4 @@ $routes->post('/save-sublowongan', 'SublowonganController::savesublowongan', ['f
 $routes->get('/download-cv/(:num)', 'SublowonganController::downloadFile/$1', ['filter' => 'role:company']);
 $routes->get('/edit-status/(:num)', 'SublowonganController::editSubmission/$1', ['filter' => 'role:company']);
 $routes->post('/update-status', 'SublowonganController::updateSubmission', ['filter' => 'role:company']);
+

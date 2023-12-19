@@ -120,31 +120,6 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <div class="job-detail mb-2">
-                <hr>
-                <ul class="list-inline mt-3 mb-0">
-                    <li class="list-inline-item mr-3">
-                        <a href="" class="text-muted f-15 mb-0"><i class="mdi mdi-map-marker mr-2"></i>3659 Turkey Pen Road Manhattan, NY 10016</a>
-                    </li>
-
-                    <li class="list-inline-item mr-3">
-                        <a href="" class="text-muted f-15 mb-0"><i class="mdi mdi-web mr-2"></i>Www.webthemes.co.in</a>
-                    </li>
-
-                    <li class="list-inline-item mr-3">
-                        <a href="" class="text-muted f-15 mb-0"><i class="mdi mdi-email mr-2"></i>Webthemes.ltd@gmail.com</a>
-                    </li>
-
-                    <li class="list-inline-item mr-3">
-                        <a href="" class="text-muted f-15 mb-0"><i class="mdi mdi-cellphone-iphone mr-2"></i>123 456 7890</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
             <h3 class="text-dark mt-4">Judul Pekerjaan</h3>
             <h5><?= $item->judul_pekerjaan ?></h5>
             <hr>

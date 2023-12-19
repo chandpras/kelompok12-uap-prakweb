@@ -100,57 +100,6 @@
         </div>
     </div>
     <!-- Navbar End -->
-    
-    <section class="home-section section-hero overlay bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
-
-      <div class="container">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-md-12">
-            <form method="post" class="search-jobs-form">
-              <div class="row mb-5">
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                  <input type="text" class="form-control form-control-lg" placeholder="Job title, Company...">
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                <select class="form-control form-control-lg" aria-label="Default select example">
-                    <option selected>Select Region</option>
-                    <option value="1">Bandar Lampung</option>
-                    <option value="2">Metro</option>
-                    <option value="3">Lampung Timur</option>
-                </select>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                <select class="form-control form-control-lg" aria-label="Default select example">
-                    <option selected>Select Job Type</option>
-                    <option value="1">Part Time</option>
-                    <option value="2">Full Time</option>
-                </select>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                  <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search Job</button>
-                </div>
-            
-              </div>
-              <div class="row">
-                <div class="col-md-12 popular-keywords">
-                  <h3>Trending Keywords:</h3>
-                  <ul class="keywords list-unstyled m-0 p-0">
-                    <li><a href="#" class="">UI Designer</a></li>
-                    <li><a href="#" class="">Python</a></li>
-                    <li><a href="#" class="">Developer</a></li>
-                  </ul>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <a href="#next" class="scroll-button smoothscroll">
-        <span class=" icon-keyboard_arrow_down"></span>
-      </a>
-
-    </section>
 
     <!-- About Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -201,7 +150,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="text-white mb-0">Candidate</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">1.930</h1>
+                            <h1 class="text-white mb-0" data-toggle="counter-up"></h1>
                         </div>
                     </div>
                 </div>
@@ -272,7 +221,6 @@
                                         </div>
                                         <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                             <div class="d-flex mb-3">
-                                                <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
                                                 <a class="btn btn-primary" href="<?= base_url('/applicant/job-info/' . $item->vacid) ?>">Apply Now</a>
                                             </div>
                                             <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i><?= $item->updated_at ?></small>
@@ -280,8 +228,6 @@
                                     </div>
                                 </div>
                                 <?php endforeach; ?>
-
-                            <a class="btn btn-primary py-3 px-5" href="<?=base_url('/applicant/morejob')?>">Browse More Jobs</a>
                         </div>
                     </div>
                 </div>

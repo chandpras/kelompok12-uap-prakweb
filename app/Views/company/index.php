@@ -32,9 +32,12 @@
 </head>
 
 <body>
+
     <?php 
     $auth = service('authentication');
-    $userId = $auth->id(); ?>
+    $userId = $auth->id();
+    $currentUser = $auth->user(); ?>
+
     <!-- Topbar Start -->
     <div class="container-fluid bg-dark px-5 d-none d-lg-block">
         <div class="row gx-0">
@@ -71,17 +74,6 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="<?= base_url('/company') ?>" class="nav-item nav-link active">Home</a>
                     <a href="<?= base_url('/company/profile') ?>" class="nav-item nav-link">Profile</a>
-                    <!-- <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                            <a href="feature.html" class="dropdown-item">Our features</a>
-                            <a href="team.html" class="dropdown-item">Team Members</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="quote.html" class="dropdown-item">Free Quote</a>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a> -->
                 </div>
                 <a href="<?= base_url('logout') ?>" class="btn btn-primary py-2 px-4 ms-3">Logout</a>
             </div>
@@ -90,15 +82,21 @@
         <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn">Logged in as <?= $userId ?></h1>
+                    <h1 class="display-4 text-white animated zoomIn">Home</h1>
                     <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h5 text-white mr-3">Home</a>
+                    <a href="" class="h5 text-white mr-3">Logged in as <?= $currentUser->username ?></a>
                     <i class="far fa-circle text-white px-2"></i>
                 </div>
-                <div class="d-grid gap-2 col-3 mt-5 mx-auto">
-                  <a href="<?= base_url('/list-lowongan') ?>" class="btn btn-primary btn-lg btn-block text-white btn-search mb-2"><span class="icon-search icon mr-2"></span>List Lowongan</a>
-                  <a href="<?= base_url('/list-pelamar') ?>" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Lihat Pelamar</a>
-                </div>
+                    <?php
+                          if ($check == 1) {
+                            ?>
+                            <div class="d-grid gap-2 col-3 mt-5 mx-auto">
+                            <a href="<?= base_url('/list-lowongan') ?>" class="btn btn-primary btn-lg btn-block text-white btn-search mb-2"><span class="icon-search icon mr-2"></span>List Lowongan</a>
+                            <a href="<?= base_url('/list-pelamar') ?>" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Lihat Pelamar</a>
+                            </div>
+                            <?php
+                          }
+                    ?>
             </div>
         </div>
     </div>
@@ -111,9 +109,9 @@
                 <div class="col-lg-7">
                     <div class="section-title position-relative pb-3 mb-5">
                         <h5 class="fw-bold text-primary text-uppercase">About Us</h5>
-                        <h1 class="mb-0">Platform Online yang Menyediakan Daftar Pekerjaan dari Berbagai Perusahaan dan Industri</h1>
+                        <h1 class="mb-0">Online Platform that Provides Job Listings from Various Companies and Industries</h1>
                     </div>
-                    <p class="mb-4">Situs ini memungkinkan perusahaan untuk mencari pekerja sesuai dengan kriteria mereka, seperti lokasi, industri, pengalaman, dan pendidikan. Informasi pekerjaan termasuk deskripsi tugas, persyaratan, gaji, dan cara melamar.</p>
+                    <p class="mb-4">The site allows companies to search for workers according to their criteria, such as location, industry, experience, and education. Job information includes job descriptions, requirements, salary, and how to apply.</p>
                     <div class="row g-0 mb-3">
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
                             <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>24/7 Information Support</h5>
@@ -140,49 +138,7 @@
         </div>
     </div>
     <!-- About End -->
-    <br><br>
-
-        <!-- Facts Start -->
-    <div class="container-fluid facts py-5 pt-lg-0">
-        <div class="container py-5 pt-lg-0">
-            <div class="row gx-0">
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                            <i class="fa fa-users text-primary"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0">Candidate</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">1.930</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="bg-light shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                        <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                            <i class="fa fa-check text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-primary mb-0">Job Post</h5>
-                            <h1 class="mb-0" data-toggle="counter-up">54</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style="height: 150px;">
-                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                            <i class="fa fa-award text-primary"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0">Company</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">45</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Facts Start -->
+    <br><br>>
 
     
 
